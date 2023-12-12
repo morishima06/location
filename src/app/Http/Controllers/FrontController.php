@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Address;
 use App\Models\Area;
-use App\Models\brand;
+use App\Models\Brand;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
