@@ -5,6 +5,9 @@ import { Head } from '@inertiajs/react';
 const Home = (props) => {
   const { brands, prefuctures, keywords } = props;
 
+  console.log(import.meta.env.VITE_APP_URL || 'false')
+  console.log(import.meta.env.APP_URL || 'false')
+
   return (
     <>
       <FrontLayout>
