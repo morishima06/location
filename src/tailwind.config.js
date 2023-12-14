@@ -15,7 +15,8 @@ module.exports = {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
-                'front-background': "url('src/public/images/front-backgroound.jpg')",
+                'background-top': "url('./images/background-top.jpg')",
+                
               }
         },
     },
