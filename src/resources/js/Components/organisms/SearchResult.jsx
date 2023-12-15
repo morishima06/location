@@ -66,9 +66,9 @@ const SearchResult = (props) => {
   };
 
   return (
-    <div className=" w-full  max-w-[1100px]  justify-center rounded-2xl  sm:mt-2  sm:flex  sm:h-[450px] sm:px-2  ">
-      <div className=" relative z-0 h-[420px] overflow-hidden bg-white sm:bottom-[22px] sm:flex sm:w-[1100px]">
-        <div className="absolute z-10 mr-4 h-[450px] w-full bg-white sm:relative sm:w-2/3">
+    <div className=" w-full  max-w-[1100px]  justify-center rounded-2xl  sm:mt-2  sm:flex   sm:px-2  ">
+      <div className=" relative z-0 h-[450px] sm:h-[400px] overflow-hidden bg-white sm:bottom-[22px] sm:flex sm:w-[1100px]">
+        <div className="absolute z-10 mr-4 h-[450px] sm:h-[400px] w-full bg-white sm:relative sm:w-2/3">
           <div className="flex  h-[56px]  items-center px-2 sm:mb-[6px] sm:h-[40px] sm:px-0">
             {shop_count === 0 ? (
               <div className="mr-2   text-sm  font-semibold text-slate-800 ">
@@ -119,8 +119,8 @@ const SearchResult = (props) => {
             </p>
           </div>
 
-          <div className="h-[400px] overflow-y-scroll sm:h-[354px]   ">
-            <div className="h-full ">
+          <div className="h-[350px] overflow-y-scroll sm:h-[354px] border sm:border-none border-slate-500  ">
+            <div className=" ">
               {shopInfo !== '' &&
                 shopInfo.map((info, index) => (
                   <UserCount.Provider key={index} value={value}>
@@ -132,10 +132,10 @@ const SearchResult = (props) => {
         </div>
 
         <div
-          className="a relative mt-[100px] h-[450px] w-full  sm:relative sm:mt-0"
+          className=" relative mt-[100px]  w-full  sm:relative sm:mt-0"
           style={openTab == '0' ? { zIndex: '0' } : { zIndex: '11' }}
         >
-          <div className="h-[400px]   w-full ">
+          <div className="sm:h-[400px] h-[350px]   w-full ">
             {/* style={active ? { display: 'block' } : { visibility: 'hidden' }} */}
             <Map center={center}>
               {shop_count > 0 && <Marker position={center} />}

@@ -10,10 +10,6 @@ const ShopList = ({ res }) => {
 
   const refHeight = useRef();
 
-  useEffect(() => {
-    console.log(refHeight);
-    setHeightEl(`${refHeight.current.scrollHeight}px`);
-  }, []);
 
   const toggleState = () => {
     setToggle(!toggle);
@@ -52,9 +48,11 @@ const ShopList = ({ res }) => {
       if (!el.contains(e.target)) {
         //ここに外側をクリックしたときの処理
         setSelected(false);
+          setHeightEl(`${refHeight.current.scrollHeight}px`);
       } else {
         //ここに内側をクリックしたときの処理
         setSelected(true);
+          setHeightEl(`${refHeight.current.scrollHeight}px`);
       }
     };
     //クリックイベントを設定
@@ -110,12 +108,11 @@ const ShopList = ({ res }) => {
           style={{ height: toggle ? `${heightEl}` : '0px' }}
           ref={refHeight}
         >
-          <p
-            className={
-              toggle
-                ? 'text-[12px] opacity-100 transition-all  duration-500'
-                : 'invisible text-[12px]  opacity-0 transition-all  duration-500  '
-            }
+          <p className={
+            toggle
+              ? '   block'
+              : '  hidden'
+          }
           >
             {res.tel}
             <br />
