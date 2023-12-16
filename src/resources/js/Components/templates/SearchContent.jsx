@@ -33,7 +33,7 @@ const SearchContent = ({ keywords, brands, prefuctures, info }) => {
             }`}
           >
             <div
-              className={`py-10 sm:hidden sm:py-0 ${
+              className={`py-6 sm:hidden sm:py-0 ${
                 mobileForm ? 'hidden' : ''
               }`}
             >

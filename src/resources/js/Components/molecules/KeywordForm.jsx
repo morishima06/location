@@ -20,8 +20,11 @@ const KeywordForm = ({ keyword_props }) => {
       })
     : '';
 
+
   const [cookiesList, setCookiesList] = useState(initialCookieList);
   const [keywordFormVal, setKeywordFormVal] = useState('');
+
+
 
   function handleKeywordSelect(e) {
     const key = e.target.id;
@@ -108,12 +111,16 @@ const KeywordForm = ({ keyword_props }) => {
       ...values,
       ['keyword']: '',
     }));
-    setCookiesList(initialCookieList);
   };
 
   function clearCookie() {
     removeCookie('name');
   }
+   useEffect(()=>{
+     setCookiesList(initialCookieList)
+
+    },[cookies])
+
 
   return (
     <>

@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { router, Head } from '@inertiajs/react';
 import Header from '@/Components/organisms/Header';
 import { RxCross2 } from 'react-icons/rx';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-const Edit = ({ shopInfo, detail_brands }) => {
+const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
   const tel = shopInfo[0].tel;
   const splitTel = tel.split('-');
   const tel1 = splitTel[0];
@@ -120,6 +121,7 @@ const Edit = ({ shopInfo, detail_brands }) => {
       })
       .catch(() => alert('eor'));
   };
+
 
   const handleSelect = (e) => {
     const val = e.target.value;
@@ -288,10 +290,6 @@ const Edit = ({ shopInfo, detail_brands }) => {
     };
   }, [insideBrandRef]);
 
-  //   useEffect(() => {
-  //     console.log('brand');
-  //     getBrand();
-  //   }, []);
 
   //   追加したブランドを参照するために必要な処理
   const getBrand = () => {
@@ -386,6 +384,9 @@ const Edit = ({ shopInfo, detail_brands }) => {
     router.post('/shopInfo/edit_check', values);
   }
 
+    console.log(values)
+
+
   useEffect(() => {
     fetch(route('ShopInfo.getAreaCode'), {
       method: 'POST',
@@ -398,7 +399,6 @@ const Edit = ({ shopInfo, detail_brands }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json.new_area_code.area_code);
         setAreaData(json.area_code);
         if (json.new_area_code.area_code) {
           setValues((values) => ({
@@ -412,14 +412,25 @@ const Edit = ({ shopInfo, detail_brands }) => {
   }, []);
 
   useEffect(() => {
-    console.log('brand');
+    console.log('bra');
     getBrand();
   }, []);
+
+  console.log(values)
+
+  
+
 
   return (
     <>
       <Head title="店舗編集" />
       <Header />
+                    <AuthenticatedLayout
+              auth={auth}
+      errors={errors}
+
+        />
+
 
       <form onSubmit={handleSubmit}>
         <div className="mx-2 mb-3 mt-10 grid gap-3 md:mx-10 md:mb-6 md:grid-cols-3">

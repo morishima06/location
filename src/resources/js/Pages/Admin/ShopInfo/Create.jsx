@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { router, Head } from '@inertiajs/react';
 import Header from '@/Components/organisms/Header';
 import { RxCross2 } from 'react-icons/rx';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-const Create = () => {
+const Create = (props) => {
   const [values, setValues] = useState({
     shop_name: '',
     shop_sort: '',
@@ -353,9 +354,16 @@ const Create = () => {
 
   return (
     <>
+
       <Head title="店舗作成" />
 
       <Header />
+              <AuthenticatedLayout
+              auth={props.auth}
+      errors={props.errors}
+
+        />
+
       <form onSubmit={handleSubmit}>
         <div className="mx-2 mb-3 mt-10 grid gap-3 md:mx-10 md:mb-6 md:grid-cols-3">
           <div>
@@ -869,6 +877,7 @@ const Create = () => {
           </button>
         </div>
       </form>
+
     </>
   );
 };

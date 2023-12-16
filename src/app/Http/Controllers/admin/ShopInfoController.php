@@ -168,6 +168,7 @@ class ShopInfoController extends Controller
         } else {
             $new_area_code =  ['area_code' => $state_code . '001'];
         }
+
         return response()->json(compact('area_code', 'new_area_code'));
     }
 
