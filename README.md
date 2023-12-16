@@ -38,7 +38,7 @@
  
 
 # ER図
-![location drawio](https://github.com/morishima06/brand-search/assets/91010416/461bcc17-b4f9-4988-9708-753ea1bd9f3a)
+![location drawio2](https://github.com/morishima06/brand-search/assets/91010416/1940c920-15ff-4633-8f4f-cf9579b79e2f)
 
 # インフラ構成図
 
