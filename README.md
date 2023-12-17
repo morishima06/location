@@ -40,6 +40,8 @@
 # ER図
 ![location drawio2](https://github.com/morishima06/brand-search/assets/91010416/1940c920-15ff-4633-8f4f-cf9579b79e2f)
 
+
+
 # インフラ構成図
 
 
