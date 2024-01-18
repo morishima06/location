@@ -14,6 +14,7 @@ const SearchContent = ({ keywords, brands, prefuctures, info }) => {
     setMobileForm(true);
   };
 
+
   return (
     <>
       <div className=" mb-0  flex h-[64px] items-center  bg-black sm:mb-[56px] sm:block sm:h-[36px] ">
