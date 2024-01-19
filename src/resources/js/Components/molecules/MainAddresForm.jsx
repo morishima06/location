@@ -81,7 +81,7 @@ const MainAddressForm = ({ address_props }) => {
           <div className="flex w-full   items-center ">
             <div className="w-full pl-4">
               <label htmlFor="" className=" block text-xs font-semibold">
-                エ
+                エリア
               </label>
               <input
                 form="form1"
