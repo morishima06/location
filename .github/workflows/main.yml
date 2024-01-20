@@ -11,11 +11,10 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1 #特定バージョンのnodeを設定するアクション
         with:
-          node-version: "12.x"
+          node-version: "12.8"
           
       - name: npm install
         working-directory: ./src
-
         run: npm install
       - name: deploy to GitHub Pages
         working-directory: ./src
