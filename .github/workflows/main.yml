@@ -13,7 +13,8 @@ jobs:
         with:
           node-version: "12.x"
           
-      - run: npm ci #dependencyのインストール
-      - run: npm build #テスト実行
-        env:
-          CI: true #現在の環境がCI環境であることを仮定
+      - name: npm install
+      run: npm install
+      - name: deploy to GitHub Pages
+      working-directory: ./src
+      run: npm run build
