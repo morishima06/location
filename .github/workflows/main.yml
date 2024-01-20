@@ -39,10 +39,10 @@ jobs:
          aws-region: ap-northeast-1
 
     # vite build
-      - name: Install Dependencies
+     - name: Install Dependencies
         run: npm install
 
-      - name: Build
+     - name: Build
         run: npm run build  # React ビルド
 
 
