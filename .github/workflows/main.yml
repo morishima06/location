@@ -12,6 +12,7 @@ jobs:
         uses: actions/setup-node@v1 #特定バージョンのnodeを設定するアクション
         with:
           node-version: "12.x"
+        working-directory: ./src
       - run: npm ci #dependencyのインストール
       - run: npm run format:check #コードフォーマットチェック
       - run: npm test -- --coverage #テスト実行
