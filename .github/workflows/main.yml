@@ -41,6 +41,7 @@ jobs:
      - name: Inspect files before checkout
        run: ls -la
      - name: show current directory before checkout
+       working-directory: src
        run: pwd
 
     # vite build
