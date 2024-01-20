@@ -16,6 +16,6 @@ jobs:
       - name: npm install
         working-directory: ./src
         run: npm install
-      # - name: deploy to GitHub Pages
-      #   working-directory: ./src
-      #   run: npm run build
+      - name: deploy to GitHub Pages
+        working-directory: ./src
+        run: npm run build
