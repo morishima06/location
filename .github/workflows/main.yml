@@ -40,10 +40,10 @@ jobs:
 
     # vite build
      - name: Install Dependencies
-        run: npm install
+       run: npm install
 
      - name: Build
-        run: npm run build  # React ビルド
+       run: npm run build  # React ビルド
 
 
      # デプロイする
