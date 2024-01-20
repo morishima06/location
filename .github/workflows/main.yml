@@ -38,6 +38,14 @@ jobs:
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: ap-northeast-1
 
+    # vite build
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build  # React ビルド
+
+
      # デプロイする
      - name: Deploy
        run: |
@@ -53,7 +61,3 @@ jobs:
          # SSHのセキュリティグループを閉じる
          aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
-     # vite build
-     - name: Build
-       run: npm run build
-       working-directory: ./src
