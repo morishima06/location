@@ -11,7 +11,7 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v1 #特定バージョンのnodeを設定するアクション
         with:
-          node-version: "12.8"
+          node-version: "16.2"
           
       - name: npm install
         working-directory: ./src
