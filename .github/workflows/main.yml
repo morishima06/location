@@ -44,14 +44,14 @@ jobs:
          node-version: "16.2"
 
 
-    # vite build
-     - name: Install Dependencies
-       working-directory: ./src
-       run: npm install
+    # # vite build
+    #  - name: Install Dependencies
+    #    working-directory: ./src
+    #    run: npm install
 
-     - name: Build
-       working-directory: ./src
-       run: npm run build  # React ビルド
+    #  - name: Build
+    #    working-directory: ./src
+    #    run: npm run build  # React ビルド
 
 
      # デプロイする
@@ -66,6 +66,8 @@ jobs:
          chmod 600 private_key
          ssh -oStrictHostKeyChecking=no ${{ secrets.EC2_USER_NAME }}@${{ secrets.EC2_HOST_NAME }} -i private_key "cd /var/www/location && git fetch --prune && git checkout main && git pull origin main"
 
-         # SSHのセキュリティグループを閉じる
-         aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
+         npm run build
+
+        #  # SSHのセキュリティグループを閉じる
+        #  aws ec2 revoke-security-group-ingress --group-id ${{ secrets.EC2_SECURITY_GROUP_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
 
