@@ -43,15 +43,18 @@ jobs:
        with:
          node-version: "16.2"
 
+     - name: バックエンドの準備
+       run: composer install
 
-    # # vite build
-    #  - name: Install Dependencies
-    #    working-directory: ./src
-    #    run: npm install
 
-    #  - name: Build
-    #    working-directory: ./src
-    #    run: npm run build  # React ビルド
+    # vite build
+     - name: Install Dependencies
+       working-directory: ./src
+       run: npm install
+
+     - name: Build
+       working-directory: ./src
+       run: npm run build  # React ビルド
 
 
      # デプロイする
