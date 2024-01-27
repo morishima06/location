@@ -190,7 +190,7 @@ const KeywordForm = ({ keyword_props }) => {
                   form="form1"
                   id="keyword"
                   type=" block"
-                  placeholder="店舗名・キーワード"
+                  placeholder="店舗名・キーワードどど"
                   autoComplete="off"
                   className="block w-full px-4   text-lg font-semibold outline-0 placeholder:text-slate-400 sm:text-sm"
                   value={keywordFormVal}
