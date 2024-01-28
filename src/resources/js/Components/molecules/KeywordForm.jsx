@@ -139,7 +139,7 @@ const KeywordForm = ({ keyword_props }) => {
                 id="keyword"
                 name="keyword"
                 readOnly
-                placeholder="店舗名・キーワード"
+                placeholder="店舗名・キーワードドドド"
                 value={keywordFormVal}
                 ref={keyword_ref1}
                 className="block text-sm font-medium leading-none placeholder-slate-400  outline-0 placeholder:justify-center placeholder:font-semibold"
@@ -190,7 +190,7 @@ const KeywordForm = ({ keyword_props }) => {
                   form="form1"
                   id="keyword"
                   type=" block"
-                  placeholder="店舗名・キーワード"
+                  placeholder="店舗名・キーワードどど"
                   autoComplete="off"
                   className="block w-full px-4   text-lg font-semibold outline-0 placeholder:text-slate-400 sm:text-sm"
                   value={keywordFormVal}
