@@ -1,1 +1,0 @@
-import{j as e}from"./app-bc6b9f11.js";import{L as r}from"./Logo-99607d83.js";const s=()=>e("header",{className:"flex h-[50px] w-full items-center justify-center bg-black sm:h-[65px] ",children:e("div",{className:" w-[1280px]",children:e(r,{})})}),c=s;export{c as H};

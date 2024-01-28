@@ -1,1 +1,0 @@
-import{j as s,d as a}from"./app-bc6b9f11.js";const o=()=>s("div",{className:"ml-2  w-[130px] sm:w-[150px]",children:s(a,{href:"/",children:s("img",{src:"http://localhost/images/header_logo.svg",alt:"",className:"  "})})});export{o as L};

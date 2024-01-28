@@ -1,1 +1,0 @@
-import{j as e}from"./app-bc6b9f11.js";function t({children:s}){return e("div",{className:"flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0",children:e("div",{className:"mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg",children:s})})}export{t as G};
