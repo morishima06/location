@@ -38,24 +38,24 @@ jobs:
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws-region: ap-northeast-1
 
-     - name: Use NodeJS
-       uses: actions/setup-node@v1 #特定バージョンのnodeを設定するアクション
-       with:
-         node-version: "16.2"
+    #  - name: Use NodeJS
+    #    uses: actions/setup-node@v1 #特定バージョンのnodeを設定するアクション
+    #    with:
+    #      node-version: "16.2"
 
-     - name: バックエンドの準備
-       working-directory: ./src
-       run: composer install
+    #  - name: バックエンドの準備
+    #    working-directory: ./src
+    #    run: composer install
 
 
-    # vite build
-     - name: Install Dependencies
-       working-directory: ./src
-       run: npm install
+    # # vite build
+    #  - name: Install Dependencies
+    #    working-directory: ./src
+    #    run: npm install
 
-     - name: Build
-       working-directory: ./src
-       run: npm run build  # React ビルド
+    #  - name: Build
+    #    working-directory: ./src
+    #    run: npm run build  # React ビルド
 
 
      # デプロイする
