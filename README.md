@@ -1,5 +1,13 @@
 # LOCATION
+<a href="https://location-shops.com/">
+<img width="1227" style="width:500px" alt="スクリーンショット 2024-01-30 19 47 53" src="https://github.com/morishima06/location/assets/91010416/a7225724-f29c-4de0-acc0-8fadcce53fc1">
+</a>
+<p>
+<a href="https://location-shops.com/">
 https://location-shops.com/
+</a>
+</p>
+
 
 # サ-ビス概要
 アパレルショップ検索アプリ
