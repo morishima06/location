@@ -47,8 +47,6 @@ jobs:
        working-directory: ./src
        run: composer install
 
-
-    # vite build
      - name: Install Dependencies
        working-directory: ./src
        run: npm install
