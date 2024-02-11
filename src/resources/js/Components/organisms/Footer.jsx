@@ -2,9 +2,10 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <div className="flex justify-center mb-4   ">
-          <div className="w-[1100px]">          
-            <p className="ml-3 font-thin text-sm">copyright2024</p>
+        <div className="flex justify-center mt-20  ">
+          
+          <div className="w-full py-1 font-thin text-sm flex justify-center bg-black text-white">          
+            <p className="pl-2">copyright2024</p>
           </div>
 
         </div>
