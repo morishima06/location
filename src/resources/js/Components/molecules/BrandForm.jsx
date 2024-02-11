@@ -15,11 +15,8 @@ const BrandForm = ({ brand_props }) => {
 
   console.log(keywords);
 
-  const initialBrandList = brands.filter((v, index) => {
-    return index < 6;
-  });
 
-  const [brandList, setBrandList] = useState(initialBrandList);
+  const [brandList, setBrandList] = useState(brands);
   const [brandFormVal, setBrandFormVal] = useState('');
   console.log(brandList);
 
@@ -61,7 +58,7 @@ const BrandForm = ({ brand_props }) => {
       ...values,
       ['brand']: '',
     }));
-    setBrandList(initialBrandList);
+    setBrandList(brands);
   };
 
   function selectBrandList(e) {
@@ -78,11 +75,8 @@ const BrandForm = ({ brand_props }) => {
     const filterBrands = brands.filter((brand) => {
       return brand.name.match(regexp);
     });
-    const limitNumberBrand = filterBrands.filter((v, brand) => {
-      return brand < 5;
-    });
-    console.log(limitNumberBrand);
-    setBrandList(limitNumberBrand);
+    console.log(filterBrands);
+    setBrandList(filterBrands);
 
     setBrandFormVal(value);
 
@@ -111,11 +105,7 @@ const BrandForm = ({ brand_props }) => {
         brand.hiragana.match(regexp)
       );
     });
-    const limitNumberBrand = filterBrands.filter((v, brand) => {
-      return brand < 5;
-    });
-    console.log(limitNumberBrand);
-    setBrandList(limitNumberBrand);
+    setBrandList(filterBrands);
   }
 
   return (
@@ -169,8 +159,8 @@ const BrandForm = ({ brand_props }) => {
               brandFormActive ? { display: 'block' } : { visibility: 'hidden' }
             }
           >
-            <div className="mr-1">
-              <div className="flex w-full justify-end sm:hidden ">
+            <div className="mr-1 ">
+              <div className="flex w-full justify-end sm:hidden h-[30px]">
                 <button
                   type="button"
                   onClick={() => {
@@ -195,8 +185,8 @@ const BrandForm = ({ brand_props }) => {
                 />
               </div>
               {brandList.length > 0 && (
-                <div>
-                  <div className="border-b"></div>
+                <div className='h-[calc(100vh-76px)] sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
+                  
 
                   {brandList.map((list) => (
                     <p

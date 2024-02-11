@@ -23,13 +23,13 @@ class BrandTableSeeder extends Seeder
             'initial' => 'A'
         ]);
         Brand::create([
-            'name' => 'A.P.C',
+            'name' => 'APC',
             'katakana' => 'アーペーセー',
             'hiragana' => 'あーぺーせー',
             'initial' => 'A'
         ]);
         Brand::create([
-            'name' => 'AMBSuH',
+            'name' => 'AMBSUH',
             'katakana' => 'アンブッシュ',
             'hiragana' => 'あんぶっしゅ',
             'initial' => 'A'
@@ -41,7 +41,7 @@ class BrandTableSeeder extends Seeder
             'initial' => 'B'
         ]);
         Brand::create([
-            'name' => 'Burberry',
+            'name' => 'BURBERRY',
             'katakana' => 'バーバリー',
             'hiragana' => 'ばーばりー',
             'initial' => 'B'
@@ -59,6 +59,19 @@ class BrandTableSeeder extends Seeder
             'initial' => 'C'
         ]);
         Brand::create([
+            'name' => 'CE',
+            'katakana' => 'シーイー',
+            'hiragana' => 'しーいー',
+            'initial' => 'C'
+        ]);
+        Brand::create([
+            'name' => 'CANADA GOOSE',
+            'katakana' => 'カナダグース',
+            'hiragana' => 'かなだぐーす',
+            'initial' => 'C'
+        ]);
+        
+        Brand::create([
             'name' => 'DIESEL',
             'katakana' => 'ディーゼル',
             'hiragana' => 'でぃーぜる',
@@ -71,7 +84,13 @@ class BrandTableSeeder extends Seeder
             'initial' => 'E'
         ]);
         Brand::create([
-            'name' => 'Guess',
+            'name' => 'FRED PERR',
+            'katakana' => 'フレッドペリー',
+            'hiragana' => 'ふれっどぺりー',
+            'initial' => 'F'
+        ]);
+        Brand::create([
+            'name' => 'GUESS',
             'katakana' => 'ゲス',
             'hiragana' => 'げす',
             'initial' => 'G'
@@ -83,9 +102,15 @@ class BrandTableSeeder extends Seeder
             'initial' => 'H'
         ]);
         Brand::create([
-            'name' => 'J Crew',
+            'name' => 'J CREW',
             'katakana' => 'ジェイクルー',
             'hiragana' => 'じぇいくるー',
+            'initial' => 'J'
+        ]);
+        Brand::create([
+            'name' => 'JIL SANDER',
+            'katakana' => 'ジルサンダー',
+            'hiragana' => 'じるさんだー',
             'initial' => 'J'
         ]);
         Brand::create([
@@ -107,9 +132,39 @@ class BrandTableSeeder extends Seeder
             'initial' => 'M'
         ]);
         Brand::create([
-            'name' => 'Neighborhood',
+            'name' => 'MARNI',
+            'katakana' => 'マルニ',
+            'hiragana' => 'まるに',
+            'initial' => 'M'
+        ]);
+        Brand::create([
+            'name' => 'MONCLER',
+            'katakana' => 'モンクレール',
+            'hiragana' => 'もんくれーる',
+            'initial' => 'M'
+        ]);
+        Brand::create([
+            'name' => 'Maison Margiela',
+            'katakana' => 'メゾン マルジェラ',
+            'hiragana' => 'めぞんまるじぇら',
+            'initial' => 'M'
+        ]);
+        Brand::create([
+            'name' => 'N.HOOLYWOOD',
+            'katakana' => 'エヌハリウッド',
+            'hiragana' => 'えぬはりうっど',
+            'initial' => 'N'
+        ]);
+        Brand::create([
+            'name' => 'NEIGHBORHOOD',
             'katakana' => 'ネイバーフッド',
             'hiragana' => 'ねいばーふっど',
+            'initial' => 'N'
+        ]);
+        Brand::create([
+            'name' => 'New Balance',
+            'katakana' => 'ニューバランス',
+            'hiragana' => 'にゅーばらんす',
             'initial' => 'N'
         ]);
         Brand::create([
@@ -125,17 +180,30 @@ class BrandTableSeeder extends Seeder
             'initial' => 'P'
         ]);
         Brand::create([
-            'name' => 'Reebok',
+            'name' => 'REEBOK',
             'katakana' => 'リーボック',
             'hiragana' => 'りーぼっく',
             'initial' => 'R'
         ]);
         Brand::create([
-            'name' => 'Supreme',
+            'name' => 'SUPREME',
             'katakana' => 'シュプリーム',
             'hiragana' => 'しゅぷりーむ',
             'initial' => 'S'
         ]);
+        Brand::create([
+            'name' => 'SUTUSSY',
+            'katakana' => 'シュテューシー',
+            'hiragana' => 'しゅてゅーしー',
+            'initial' => 'S'
+        ]);
+        Brand::create([
+            'name' => 'SOPH',
+            'katakana' => 'ソフ',
+            'hiragana' => 'そふ',
+            'initial' => 'S'
+        ]);
+        
         Brand::create([
             'name' => 'THE NORTH FACE',
             'katakana' => 'ザノースフェイス',
@@ -154,6 +222,13 @@ class BrandTableSeeder extends Seeder
             'hiragana' => 'ばんず',
             'initial' => 'V'
         ]);
+        Brand::create([
+            'name' => 'White Mountaineering',
+            'katakana' => 'ホワイトマウンテニアリング',
+            'hiragana' => 'ほわいとまうんてにありんぐ',
+            'initial' => 'W'
+        ]);
+        
         Brand::create([
             'name' => 'Y-3',
             'katakana' => 'ワイスリー',

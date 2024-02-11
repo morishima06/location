@@ -6,6 +6,7 @@ import InputLabel from '@/Components/atoms/InputLabel';
 import PrimaryButton from '@/Components/atoms/PrimaryButton';
 import TextInput from '@/Components/atoms/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import Header from '@/Components/organisms/Header';
 
 export default function Login({ status, canResetPassword }) {
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -38,6 +39,7 @@ export default function Login({ status, canResetPassword }) {
   return (
     <GuestLayout>
       <Head title="Log in" />
+      <Header />
 
       {status && (
         <div className="mb-4 text-sm font-medium text-green-600">{status}</div>

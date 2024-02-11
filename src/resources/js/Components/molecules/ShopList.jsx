@@ -10,7 +10,6 @@ const ShopList = ({ res }) => {
 
   const refHeight = useRef();
 
-
   const toggleState = () => {
     setToggle(!toggle);
   };
@@ -48,11 +47,11 @@ const ShopList = ({ res }) => {
       if (!el.contains(e.target)) {
         //ここに外側をクリックしたときの処理
         setSelected(false);
-          setHeightEl(`${refHeight.current.scrollHeight}px`);
+        setHeightEl(`${refHeight.current.scrollHeight}px`);
       } else {
         //ここに内側をクリックしたときの処理
         setSelected(true);
-          setHeightEl(`${refHeight.current.scrollHeight}px`);
+        setHeightEl(`${refHeight.current.scrollHeight}px`);
       }
     };
     //クリックイベントを設定
@@ -82,9 +81,7 @@ const ShopList = ({ res }) => {
         <div className="flex">
           <div>
             <h3 className=" text-[14px] font-semibold ">{res.name}</h3>
-            <p className="mt-1 text-[12px]">
-              {res.state + res.city + res.address}
-            </p>
+            <p className="mt-1 text-[12px]">最寄駅 : {res.station}</p>
           </div>
 
           <div className=" ml-auto mr-2 flex items-center hover:text-amber-500">
@@ -108,19 +105,15 @@ const ShopList = ({ res }) => {
           style={{ height: toggle ? `${heightEl}` : '0px' }}
           ref={refHeight}
         >
-          <p className={
-            toggle
-              ? '   block'
-              : '  hidden'
-          }
-          >
-            {res.tel}
+          <p className={toggle ? '   block' : '  hidden'}>
+            <br />
+            {res.state + res.city + res.address}
+            <br />
+            tel:{res.tel}
             <br />
             営業時間:{res.hour}
             <br />
             定休日:{res.holiday}曜日
-            <br />
-            最寄駅 : {res.station}
             <br />
             主な取り扱いブランド:{res.brand_name}
           </p>

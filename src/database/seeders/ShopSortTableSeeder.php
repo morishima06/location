@@ -16,17 +16,17 @@ class ShopSortTableSeeder extends Seeder
     public function run()
     {
         ShopSort::create([
-            'id'=>'1',
+            'id' => '1',
             'name' => 'セレクトショップ',
         ]);
         ShopSort::create([
-            'id'=>'2',
+            'id' => '2',
             'name' => 'ブランドショップ',
         ]);
-        ShopSort::create([
-            'id'=>'3',
-            'name' => '百貨店',
-        ]);
-        
+        // ShopSort::create([
+        //     'id'=>'3',
+        //     'name' => '百貨店',
+        // ]);
+
     }
 }

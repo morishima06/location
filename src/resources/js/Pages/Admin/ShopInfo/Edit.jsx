@@ -4,13 +4,14 @@ import Header from '@/Components/organisms/Header';
 import { RxCross2 } from 'react-icons/rx';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
+const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   const tel = shopInfo[0].tel;
   const splitTel = tel.split('-');
   const tel1 = splitTel[0];
   const tel2 = splitTel[1];
   const tel3 = splitTel[2];
   const zip = shopInfo[0].zip.replace('-', '');
+  console.log(shopInfo)
 
   console.log(shopInfo[0].zip);
 
@@ -48,6 +49,7 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
     brand: detail_brands,
     area_id: area_id,
     area_code: area_code,
+    area_name:area_name,
     addBrand: '',
     addKana: '',
     addArea: '',
@@ -73,6 +75,7 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
   const searchAddress = (e) => {
     e.preventDefault();
 
+
     fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${values.zip_code}`)
       .then((res) => res.json())
       .then(
@@ -84,8 +87,10 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
             ['city']: json.results[0].address2,
             ['address']: json.results[0].address3,
             ['state_code']: areaCode[json.results[0].address1],
+                  ['area_code']: '',
+
           })),
-          getAreaCode(json.results[0].address1)
+          getAreaCode(areaCode[json.results[0].address1])
         ),
       )
       .then((data) => console.log(data))
@@ -93,47 +98,38 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
   };
 
   const getAreaCode = (val) => {
-    fetch(route('ShopInfo.getAreaCode'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-          .content,
-      },
-      body: JSON.stringify({ state_code: areaCode[val] }),
-    })
+      const params = { // 渡したいパラメータをJSON形式で書く
+      state_code: val,
+    };
+    const query_params = new URLSearchParams(params); 
+
+
+    fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
       .then((response) => response.json())
       .then((json) => {
         console.log(json.new_area_code.area_code);
         setAreaData(json.area_code);
-        if (json.new_area_code.area_code) {
           setValues((values) => ({
             ...values,
             ['addAreaCode']: json.new_area_code.area_code,
-            ['area_code']: '',
           }));
-        } else {
-          setValues((values) => ({
-            ...values,
-            ['addAreaCode']: '2',
-          }));
-        }
       })
       .catch(() => alert('eor'));
   };
 
-
   const handleSelect = (e) => {
     const val = e.target.value;
+    console.log(888)
     console.log(val);
 
     handleValue(e);
     setValues((values) => ({
       ...values,
       ['state_code']: areaCode[val],
+      ['area_code']: '',
     }));
 
-    getAreaCode(val);
+    getAreaCode(areaCode[val]);
   };
 
   const areaCode = {
@@ -290,7 +286,6 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
     };
   }, [insideBrandRef]);
 
-
   //   追加したブランドを参照するために必要な処理
   const getBrand = () => {
     fetch(route('ShopInfo.getBrand'), {
@@ -384,53 +379,51 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
     router.post('/shopInfo/edit_check', values);
   }
 
-    console.log(values)
+  console.log(values);
 
 
-  useEffect(() => {
-    fetch(route('ShopInfo.getAreaCode'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-          .content,
-      },
-      body: JSON.stringify({ state_code: state_code }),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        setAreaData(json.area_code);
-        if (json.new_area_code.area_code) {
-          setValues((values) => ({
-            ...values,
-            ['addAreaCode']: json.new_area_code.area_code,
-            ['area_code']: area_code,
-          }));
-        }
-      })
-      .catch(() => alert('eor'));
+
+  // useEffect(() => {
+  //   console.log('bra');
+  //   getBrand();
+  // }, []);
+
+    useEffect(() => {
+    //     const params = { // 渡したいパラメータをJSON形式で書く
+    //   state_code: values.state_code,
+    // };
+    // const query_params = new URLSearchParams(params); 
+
+    // fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log(json)
+    //     console.log(json.areaCode)
+    //     console.log(json.new_area_code)
+    //     setAreaData(json.area_code);
+    //     if (json.new_area_code.area_code) {
+    //       setValues((values) => ({
+    //         ...values,
+    //         ['addAreaCode']: json.new_area_code.area_code,
+    //         ['area_code']: area_code,
+    //       }));
+    //     }
+    //   })
+    //         .catch((e) => {
+    //     console.log(9)
+    //   });
+    getAreaCode(values.state_code)
+
   }, []);
 
-  useEffect(() => {
-    console.log('bra');
-    getBrand();
-  }, []);
 
-  console.log(values)
-
-  
-
+  console.log(values);
 
   return (
     <>
       <Head title="店舗編集" />
       <Header />
-                    <AuthenticatedLayout
-              auth={auth}
-      errors={errors}
-
-        />
-
+      <AuthenticatedLayout auth={auth} errors={errors} />
 
       <form onSubmit={handleSubmit}>
         <div className="mx-2 mb-3 mt-10 grid gap-3 md:mx-10 md:mb-6 md:grid-cols-3">
@@ -486,7 +479,6 @@ const Edit = ({ shopInfo, detail_brands ,auth,errors}) => {
               <option value="">選択してください</option>
               <option value="1">セレクトショップ</option>
               <option value="2">ブランドショップ</option>
-              <option value="3">百貨店</option>
             </select>
           </div>
         </div>

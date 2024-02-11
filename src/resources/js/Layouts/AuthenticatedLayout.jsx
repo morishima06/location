@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from '@/Components/organisms/Header';
 import Dropdown from '@/Components/atoms/Dropdown';
 import ResponsiveNavLink from '@/Components/atoms/ResponsiveNavLink';
 
@@ -150,8 +149,6 @@ export default function Authenticated({ auth, header, children }) {
           </div>
         </div>
       </nav>
-
-
     </div>
   );
 }

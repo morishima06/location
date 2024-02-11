@@ -5,11 +5,7 @@ const Logo = () => {
   return (
     <div className="ml-2  w-[130px] sm:w-[150px]">
       <Link href="/">
-        <img
-          src={header_logo}
-          alt=""
-          className="  "
-        />
+        <img src={header_logo} alt="" className="  " />
       </Link>
     </div>
   );

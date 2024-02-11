@@ -146,19 +146,19 @@ class AreaTableSeeder extends Seeder
         );
         Area::create(
             [
-                'name' => '中目黒',
+                'name' => '中目黒エリア',
                 'area_code' => '013007'
             ]
         );
         Area::create(
             [
-                'name' => '横浜',
+                'name' => '横浜エリア',
                 'area_code' => '014001'
             ]
         );
         Area::create(
             [
-                'name' => '川崎',
+                'name' => '川崎エリア',
                 'area_code' => '014002'
             ]
         );
@@ -298,7 +298,7 @@ class AreaTableSeeder extends Seeder
         Area::create(
             [
                 'name' => '西宮エリア',
-                'area_code' => '028001'
+                'area_code' => '028002'
             ]
         );
         Area::create(
@@ -309,7 +309,7 @@ class AreaTableSeeder extends Seeder
         );
         Area::create(
             [
-                'name' => '米和歌山エリア',
+                'name' => '和歌山エリア',
                 'area_code' => '030001'
             ]
         );

@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/shopInfo/show', [ShopInfoController::class, 'show'])->name('ShopInfo.show');
     Route::get('/shopInfo/create', [ShopInfoController::class, 'create'])->name('ShopInfo.create');
     Route::post('/shopInfo/create_check', [ShopInfoController::class, 'create_check'])->name('ShopInfo.create_check');
+    // Route::post('/shopInfo/getAreaCode', [ShopInfoController::class, 'getAreaCode'])->name('ShopInfo.getAreaCode');
+    Route::get('/shopInfo/getAreaCode', [ShopInfoController::class, 'getAreaCode'])->name('ShopInfo.getAreaCode');
     Route::post('/shopInfo/getAreaCode', [ShopInfoController::class, 'getAreaCode'])->name('ShopInfo.getAreaCode');
     Route::post('/shopInfo/edit_check', [ShopInfoController::class, 'edit_check'])->name('ShopInfo.edit_check');
 

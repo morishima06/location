@@ -5,7 +5,6 @@ export default function Dashboard(props) {
     <AuthenticatedLayout
       auth={props.auth}
       errors={props.errors}
-
     ></AuthenticatedLayout>
   );
 }

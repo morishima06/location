@@ -99,11 +99,9 @@ const MainKeywordForm = ({ keyword_props }) => {
   function clearCookie() {
     removeCookie('name');
   }
-     useEffect(()=>{
-     setCookiesList(initialCookieList)
-
-    },[cookies])
-
+  useEffect(() => {
+    setCookiesList(initialCookieList);
+  }, [cookies]);
 
   return (
     <>

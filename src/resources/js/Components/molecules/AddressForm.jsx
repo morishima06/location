@@ -63,6 +63,7 @@ const AddressForm = ({ address_props }) => {
     setAddressFormVal(value);
     setAddressFormActive(false);
   };
+  console.log(prefuctures)
 
   return (
     <>
@@ -117,7 +118,7 @@ const AddressForm = ({ address_props }) => {
             }
           >
             <div className="mr-1 ">
-              <div className="flex w-full justify-end sm:hidden ">
+              <div className="flex h-[30px] w-full justify-end sm:hidden  ">
                 <button
                   type="button"
                   onClick={() => {
@@ -129,10 +130,10 @@ const AddressForm = ({ address_props }) => {
                 </button>
               </div>
 
-              <p className="mb-2 flex w-full justify-center border-b border-slate-100 pb-2 font-semibold drop-shadow-sm sm:my-2">
+              <p className="flex w-full h-[40px] mb-[5px] items-center justify-center border-b border-slate-100  font-semibold drop-shadow-sm ">
                 エリア一覧
               </p>
-              <div className="max-h-[50px] overflow-scroll">
+              <div className="overflow-scroll h-[calc(100vh-75px)] sm:h-[300px]">
                 {Object.keys(prefuctures).map((key, index) => (
                   <div key={index}>
                     <div

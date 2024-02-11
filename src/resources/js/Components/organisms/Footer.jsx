@@ -2,8 +2,11 @@ const Footer = () => {
   return (
     <>
       <footer>
-        <div className="mb-4 mt-8 flex justify-center">
-          <p className="font-semibold">copyright2023</p>
+        <div className="flex justify-center mb-4   ">
+          <div className="w-[1100px]">          
+            <p className="ml-3 font-thin text-sm">copyright2024</p>
+          </div>
+
         </div>
       </footer>
     </>

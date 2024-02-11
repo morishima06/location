@@ -14,11 +14,8 @@ const MainBrandForm = ({ brand_props }) => {
 
   console.log(brands);
 
-  const initialBrandList = brands.filter((v, index) => {
-    return index < 6;
-  });
 
-  const [brandList, setBrandList] = useState(initialBrandList);
+  const [brandList, setBrandList] = useState(brands);
   const [brandFormVal, setBrandFormVal] = useState(keywords.brand);
 
   const brand_ref1 = useRef(null);
@@ -55,7 +52,7 @@ const MainBrandForm = ({ brand_props }) => {
       ...values,
       ['brand']: '',
     }));
-    setBrandList(initialBrandList);
+    setBrandList(brands);
   };
 
   function selectBrandList(e) {
@@ -72,10 +69,7 @@ const MainBrandForm = ({ brand_props }) => {
     const filterBrands = brands.filter((brand) => {
       return brand.name.match(regexp);
     });
-    const limitNumberBrand = filterBrands.filter((v, brand) => {
-      return brand < 6;
-    });
-    setBrandList(limitNumberBrand);
+    setBrandList(filterBrands);
 
     setBrandFormVal(value);
     setBrandFormActive(false);
@@ -99,11 +93,8 @@ const MainBrandForm = ({ brand_props }) => {
         brand.hiragana.match(regexp)
       );
     });
-    const limitNumberBrand = filterBrands.filter((v, brand) => {
-      return brand < 5;
-    });
 
-    setBrandList(limitNumberBrand);
+    setBrandList(filterBrands);
   }
 
   return (
@@ -190,8 +181,7 @@ const MainBrandForm = ({ brand_props }) => {
                 />
               </div>
               {brandList.length > 0 && (
-                <div>
-                  <div className="border-b"></div>
+                <div className='h-[calc(100vh-76px)] sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
                   {brandList.map((list) => (
                     <p
                       className="cursor-pointer bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 "

@@ -53,8 +53,10 @@ const Create = (props) => {
             ['city']: json.results[0].address2,
             ['address']: json.results[0].address3,
             ['state_code']: areaCode[json.results[0].address1],
+                              ['area_code']: '',
+
           })),
-          getAreaCode(json.results[0].address1)
+          getAreaCode(areaCode[json.results[0].address1])
         ),
       )
       .then((data) => console.log(data))
@@ -62,31 +64,21 @@ const Create = (props) => {
   };
 
   const getAreaCode = (val) => {
-    fetch(route('ShopInfo.getAreaCode'), {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-          .content,
-      },
-      body: JSON.stringify({ state_code: areaCode[val] }),
-    })
+      const params = { // 渡したいパラメータをJSON形式で書く
+      state_code: val,
+    };
+    const query_params = new URLSearchParams(params); 
+
+
+    fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
       .then((response) => response.json())
       .then((json) => {
         console.log(json.new_area_code.area_code);
         setAreaData(json.area_code);
-        if (json.new_area_code.area_code) {
           setValues((values) => ({
             ...values,
             ['addAreaCode']: json.new_area_code.area_code,
-            ['area_code']: '',
           }));
-        } else {
-          setValues((values) => ({
-            ...values,
-            ['addAreaCode']: '2',
-          }));
-        }
       })
       .catch(() => alert('eor'));
   };
@@ -99,9 +91,11 @@ const Create = (props) => {
     setValues((values) => ({
       ...values,
       ['state_code']: areaCode[val],
+            ['area_code']: '',
+
     }));
 
-    getAreaCode(val);
+    getAreaCode(areaCode[val]);
   };
 
   const areaCode = {
@@ -354,15 +348,10 @@ const Create = (props) => {
 
   return (
     <>
-
       <Head title="店舗作成" />
 
       <Header />
-              <AuthenticatedLayout
-              auth={props.auth}
-      errors={props.errors}
-
-        />
+      <AuthenticatedLayout auth={props.auth} errors={props.errors} />
 
       <form onSubmit={handleSubmit}>
         <div className="mx-2 mb-3 mt-10 grid gap-3 md:mx-10 md:mb-6 md:grid-cols-3">
@@ -399,7 +388,6 @@ const Create = (props) => {
               <option value="">選択してください</option>
               <option value="1">セレクトショップ</option>
               <option value="2">ブランドショップ</option>
-              <option value="3">百貨店</option>
             </select>
           </div>
         </div>
@@ -877,7 +865,6 @@ const Create = (props) => {
           </button>
         </div>
       </form>
-
     </>
   );
 };

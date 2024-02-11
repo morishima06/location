@@ -14,7 +14,6 @@ const SearchContent = ({ keywords, brands, prefuctures, info }) => {
     setMobileForm(true);
   };
 
-
   return (
     <>
       <div className=" mb-0  flex h-[64px] items-center  bg-black sm:mb-[56px] sm:block sm:h-[36px] ">
@@ -29,14 +28,12 @@ const SearchContent = ({ keywords, brands, prefuctures, info }) => {
           </div>
 
           <div
-            className={`fixed top-0  z-10  w-full bg-black sm:relative  sm:mt-0 sm:block sm:bg-transparent sm:pt-0 ${
+            className={`fixed top-0   z-10  w-full bg-black sm:relative  sm:mt-0 sm:block sm:bg-transparent sm:pt-0 ${
               mobileForm ? 'hidden' : ''
             }`}
           >
             <div
-              className={`py-6 sm:hidden sm:py-0 ${
-                mobileForm ? 'hidden' : ''
-              }`}
+              className={`py-6 sm:hidden sm:py-0 ${mobileForm ? 'hidden' : ''}`}
             >
               <Logo />
             </div>

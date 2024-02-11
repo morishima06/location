@@ -25,11 +25,7 @@ class ShopInfoController extends Controller
             ss.name as sort,
             ad.zip_code as zip , ad.state, state_code, ad.city as city, ad.address, ad.nearest_station as station,
             ar.name as area_name, ar.area_code,
-                          group_concat(b.name )as brand_name
-
-
-            
-            '
+            group_concat(b.name )as brand_name'
             ))
             ->leftJoin('shop_details as sd', function ($join) {
                 $join->on('s.id', '=', 'sd.shop_id');
@@ -51,14 +47,6 @@ class ShopInfoController extends Controller
             })
             ->groupBy('s.id')->get()->toarray();
 
-
-
-
-
-
-
-
-
         return Inertia::render('Admin/ShopInfo/Show', compact('shopInfo'));
     }
 
@@ -69,13 +57,6 @@ class ShopInfoController extends Controller
 
     public function create_check(Request $request)
     {
-
-
-
-
-
-
-
         $shop_name = $request->shop_name;
         $shop_sort = $request->shop_sort;
         $zip_code = $request->zip_code;
@@ -92,12 +73,9 @@ class ShopInfoController extends Controller
         $nearest_station = $request->nearest_station;
         $business_hours = $request->business_hours;
         $regular_holiday = $request->regular_holiday;
-
         $shop =  Shop::create([
             'name' => $shop_name,
         ]);
-
-
         ShopDetail::create([
             'shop_id' => $shop->id,
             'tel' => $tel,
@@ -106,7 +84,6 @@ class ShopInfoController extends Controller
             'regular_holiday' => $regular_holiday
 
         ]);
-
         Address::create([
             'shop_id' => $shop->id,
             'zip_code' => $zip_code,
@@ -117,7 +94,6 @@ class ShopInfoController extends Controller
             'area_id' => $area_id,
             'nearest_station' => $nearest_station
         ]);
-
 
         $shop_id = $shop->id;
         // foreach ($brand as $info) {
@@ -136,13 +112,7 @@ class ShopInfoController extends Controller
         Shop::find($shop_id)
             ->brands()->attach($brand_id);
 
-
-
-
-
         // Shop::find(1)->brands()->sync([]);
-
-
         return redirect()->route('ShopInfo.create');
     }
 
@@ -218,9 +188,6 @@ class ShopInfoController extends Controller
                       ss.id as sort_id,  ss.name as sort,
             ad.zip_code as zip , ad.state, state_code, ad.city as city, ad.address, ad.nearest_station as station,
             ar.id as area_id, ar.name as area_name, ar.area_code
-
-
-
             '
             ))
             ->where('s.id', '=', $id)
@@ -239,14 +206,7 @@ class ShopInfoController extends Controller
             ->get()->toarray();
 
         $detail_brands =  Shop::find($id)->brands()->get()->toarray();
-        // dd($detail_brands);
         $brands =  Brand::all()->toArray();
-
-
-
-
-        // dd($shopInfo);
-
 
         return Inertia::render('Admin/ShopInfo/Edit', compact('shopInfo', 'detail_brands', 'brands'));
     }
@@ -277,13 +237,9 @@ class ShopInfoController extends Controller
             ->select(DB::raw(
                 's.id, s.name,
             sd.tel, sd.business_hours, sd.regular_holiday,
-                        sd.sort_id ,
+            sd.sort_id ,
             ad.zip_code as zip , ad.state, state_code, ad.city as city, ad.address, ad.nearest_station as station,
-            ar.id as area_id ,ar.name as area_name, ar.area_code
-
-
-
-            '
+            ar.id as area_id ,ar.name as area_name, ar.area_code'
             ))
             ->where('s.id', '=', $shop_id)
             ->leftJoin('shop_details as sd', function ($join) {
@@ -296,11 +252,6 @@ class ShopInfoController extends Controller
                 $join->on('ad.area_id', '=', 'ar.id');
             });
         // ->get()->toarray();
-        // dd($shopInfo);
-
-
-
-
 
         // dd($shopInfo);
         $shopInfo->update([
@@ -316,13 +267,11 @@ class ShopInfoController extends Controller
             "ad.address" => $address,
             "ad.nearest_station" => $nearest_station,
             "ad.area_id" => $area_id
-
         ]);
 
         foreach ($brands as $brand) {
             $brand_id[] = $brand['id'];
         }
-
 
         Shop::find($shop_id)->brands()->sync($brand_id);
 
