@@ -103,8 +103,10 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     };
     const query_params = new URLSearchParams(params); 
 
+    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"
 
-    fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
+
+    fetch(url + query_params)
       .then((response) => response.json())
       .then((json) => {
         console.log(json.new_area_code.area_code);
@@ -416,8 +418,11 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   }, []);
 
+      const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"
 
-  console.log(values);
+
+
+  console.log(url);
 
   return (
     <>
