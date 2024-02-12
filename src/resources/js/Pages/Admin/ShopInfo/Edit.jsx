@@ -290,14 +290,8 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   //   追加したブランドを参照するために必要な処理
   const getBrand = () => {
-    fetch(route('ShopInfo.getBrand'), {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-          .content,
-      },
-    })
+    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getBrand"
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
         setInitialBrandList(json);
@@ -311,7 +305,8 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   const addArea = (e) => {
     e.preventDefault();
-    fetch(route('ShopInfo.addArea'), {
+    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addArea"
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -337,7 +332,10 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   };
 
   const addBrand = () => {
-    fetch(route('ShopInfo.addBrand'), {
+
+    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addBrand"
+
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -385,37 +383,10 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
 
 
-  // useEffect(() => {
-  //   console.log('bra');
-  //   getBrand();
-  // }, []);
 
     useEffect(() => {
-    //     const params = { // 渡したいパラメータをJSON形式で書く
-    //   state_code: values.state_code,
-    // };
-    // const query_params = new URLSearchParams(params); 
-
-    // fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     console.log(json)
-    //     console.log(json.areaCode)
-    //     console.log(json.new_area_code)
-    //     setAreaData(json.area_code);
-    //     if (json.new_area_code.area_code) {
-    //       setValues((values) => ({
-    //         ...values,
-    //         ['addAreaCode']: json.new_area_code.area_code,
-    //         ['area_code']: area_code,
-    //       }));
-    //     }
-    //   })
-    //         .catch((e) => {
-    //     console.log(9)
-    //   });
-    getAreaCode(values.state_code)
-
+      getBrand();
+      getAreaCode(values.state_code)
   }, []);
 
       const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"

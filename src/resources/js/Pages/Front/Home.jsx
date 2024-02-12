@@ -14,7 +14,7 @@ const Home = (props) => {
           brands={brands}
           prefuctures={prefuctures}
         />
-        <div className=" mt-8  flex justify-center sm:mt-10">
+        <div className=" mt-8  flex justify-center sm:mt-10 ">
           <div>
             {/* PC用画像 */}
             <img

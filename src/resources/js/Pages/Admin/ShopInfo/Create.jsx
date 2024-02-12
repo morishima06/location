@@ -69,8 +69,10 @@ const Create = (props) => {
     };
     const query_params = new URLSearchParams(params); 
 
+    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"
 
-    fetch('http://localhost/shopInfo/getAreaCode?' + query_params)
+
+    fetch(url + query_params)
       .then((response) => response.json())
       .then((json) => {
         console.log(json.new_area_code.area_code);
@@ -91,7 +93,7 @@ const Create = (props) => {
     setValues((values) => ({
       ...values,
       ['state_code']: areaCode[val],
-            ['area_code']: '',
+      ['area_code']: '',
 
     }));
 
@@ -251,14 +253,9 @@ const Create = (props) => {
 
   //   追加したブランドを参照するために必要な処理
   const getBrand = () => {
-    fetch(route('ShopInfo.getBrand'), {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-          .content,
-      },
-    })
+        const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getBrand"
+
+    fetch(url)
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
@@ -273,7 +270,9 @@ const Create = (props) => {
 
   const addArea = (e) => {
     e.preventDefault();
-    fetch(route('ShopInfo.addArea'), {
+        const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addArea"
+
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -288,7 +287,7 @@ const Create = (props) => {
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
-        getAreaCode(values.state);
+        getAreaCode(areaCode[values.state]);
         setValues((values) => ({
           ...values,
           ['addArea']: '',
@@ -299,7 +298,10 @@ const Create = (props) => {
   };
 
   const addBrand = () => {
-    fetch(route('ShopInfo.addBrand'), {
+        const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addBrand"
+
+
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
