@@ -11,10 +11,12 @@ https://location-shops.com/
 
 # サ-ビス概要
 アパレルショップ検索アプリ
-<p><a>詳しい制作過程はこちらから</a></p>
+<p><a href="https://sm-portfolio.net/location_dt" target="_blank">詳しい制作過程はこちらから</a></p>
+
 
 # 主な使用技術・言語
 - React18.2
+  - atomic design
   - eslint
   - prettier
 - PHP8.2.15
@@ -23,8 +25,13 @@ https://location-shops.com/
 - Inertia
 - tailwind3.2.1
 - Mysql
+  - Sequel Ace
 - Docker(Docker Compose)
-- Vite
+- Vite（ビルドツール）
+- お名前.com(DNS)
+- Git hub actions(ci/cd)
+- Aws
+  - vpc(EC2(Amazon Linux2/NGINX)/ELB/Route53/RDS)
 
 # 機能一覧
 - 検索機能
@@ -39,6 +46,7 @@ https://location-shops.com/
 - ログイン機能
   - 店舗情報の登録、編集
   - ブランド、エリアの追加
+- レスポンシブ対応
  
 # ER図
 ![location drawio2](https://github.com/morishima06/brand-search/assets/91010416/1940c920-15ff-4633-8f4f-cf9579b79e2f)
