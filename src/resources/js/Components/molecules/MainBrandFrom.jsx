@@ -11,7 +11,15 @@ const MainBrandForm = ({ brand_props }) => {
     setBrandFormActive,
     setAddressFormActive,
   } = brand_props;
+  
+//   function setHeight() {
+//   let vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty('--vh', `${vh}px`);
+//   console.log(vh)
+// }
 
+// // 2.初期化
+// setHeight();
   
 
 
@@ -96,6 +104,16 @@ const MainBrandForm = ({ brand_props }) => {
 
     setBrandList(filterBrands);
   }
+  const ko=window.innerHeight;
+  const kl = ko - 76
+  const style = {
+  height : kl
+
+}
+
+
+
+
 
   return (
     <>
@@ -181,7 +199,7 @@ const MainBrandForm = ({ brand_props }) => {
                 />
               </div>
               {brandList.length > 0 && (
-                <div style={{'height': '-webkit-fill-available'}} className='h-[calc(100vh-76px)] sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
+                <div  style={style} className=' sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
                   {brandList.map((list) => (
                     <p
                       className="cursor-pointer bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 "
