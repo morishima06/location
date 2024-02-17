@@ -104,11 +104,9 @@ const MainBrandForm = ({ brand_props }) => {
 
     setBrandList(filterBrands);
   }
-  const ko=window.innerHeight;
-  const kl = ko - 76
-  const style = {
-  height : kl
-
+  const MobileInnerHeight = window.innerHeight - 76;
+  const MobileInnerHeightStyle = {
+  height : MobileInnerHeight
 }
 
 
@@ -199,7 +197,7 @@ const MainBrandForm = ({ brand_props }) => {
                 />
               </div>
               {brandList.length > 0 && (
-                <div  style={style} className=' sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
+                <div  style={MobileInnerHeightStyle} className=' sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
                   {brandList.map((list) => (
                     <p
                       className="cursor-pointer bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 "

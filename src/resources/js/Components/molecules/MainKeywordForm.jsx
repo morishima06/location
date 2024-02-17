@@ -103,6 +103,8 @@ const MainKeywordForm = ({ keyword_props }) => {
     setCookiesList(initialCookieList);
   }, [cookies]);
 
+  
+
   return (
     <>
       {/* キーワード */}
