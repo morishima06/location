@@ -5,8 +5,7 @@ import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { CookiesProvider } from 'react-cookie';
-import Div100vh from 'react-div-100vh';
-​
+
 
 const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Location';
@@ -22,11 +21,9 @@ createInertiaApp({
     const root = createRoot(el);
 
     root.render(
-      <Div100vh>
       <CookiesProvider>
         <App {...props} />
-      </CookiesProvider>
-      </Div100vh>
+      </CookiesProvider>,
     );
   },
   progress: {
