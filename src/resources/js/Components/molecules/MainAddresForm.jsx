@@ -87,7 +87,7 @@ const MainAddressForm = ({ address_props }) => {
                 form="form1"
                 id="address"
                 readOnly
-                className="block  border-none bg-transparent text-xs font-medium leading-none outline-0  placeholder:text-slate-900"
+                className="block  border-none bg-transparent text-xs font-extralight leading-none outline-0  placeholder:text-slate-900"
                 name="address"
                 value={addressFormVal ? addressFormVal : ''}
                 ref={addressRef}
