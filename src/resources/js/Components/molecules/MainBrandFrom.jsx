@@ -181,7 +181,7 @@ const MainBrandForm = ({ brand_props }) => {
                 />
               </div>
               {brandList.length > 0 && (
-                <div className='h-[calc(100vh-76px)] sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
+                <div style={{height: -webkit-fill-available}} className='h-[calc(100vh-76px)] sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
                   {brandList.map((list) => (
                     <p
                       className="cursor-pointer bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 "
