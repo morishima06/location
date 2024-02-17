@@ -122,7 +122,7 @@ const MainBrandForm = ({ brand_props }) => {
                 placeholder="ブランド名"
                 ref={brand_ref1}
                 value={brandFormVal ? brandFormVal : ''}
-                className="block text-xs font-extralight leading-none outline-0   placeholder:justify-center placeholder:font-medium  placeholder:text-slate-900"
+                className="block text-xs leading-none outline-0   placeholder:justify-center placeholder:font-light  placeholder:text-slate-900"
               />
             </div>
           </div>
