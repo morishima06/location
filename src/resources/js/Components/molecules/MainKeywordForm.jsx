@@ -126,7 +126,7 @@ const MainKeywordForm = ({ keyword_props }) => {
                 placeholder="店舗名・キーワード"
                 ref={keyword_ref1}
                 value={keywordFormVal ? keywordFormVal : ''}
-                className="block text-xs leading-none outline-0 placeholder:justify-center placeholder:font-medium  placeholder:text-slate-900"
+                className="block text-xs font-medium leading-none outline-0 placeholder:justify-center placeholder:font-medium  placeholder:text-slate-900"
               />
             </div>
           </div>
