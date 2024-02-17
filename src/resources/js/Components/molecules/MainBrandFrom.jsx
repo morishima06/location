@@ -12,7 +12,7 @@ const MainBrandForm = ({ brand_props }) => {
     setAddressFormActive,
   } = brand_props;
 
-  console.log(brands);
+  
 
 
   const [brandList, setBrandList] = useState(brands);
