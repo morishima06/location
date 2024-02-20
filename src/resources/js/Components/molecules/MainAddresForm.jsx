@@ -141,7 +141,7 @@ const MainAddressForm = ({ address_props }) => {
             <p className="  flex h-[40px] w-full justify-center items-center mb-[5px] border-b  border-slate-100  font-semibold drop-shadow-sm ">
               エリア一覧
             </p>
-            <div style={MobileInnerHeightStyle} className="overflow-scroll  sm:h-[220px] rounded-lg   bg-white pb-1 ">
+            <div style={MobileInnerHeightStyle} className="overflow-scroll  sm:max-h-[220px] rounded-lg   bg-white pb-1 ">
                 {Object.keys(prefuctures).map((prefucture, index) => (
                   <div key={index}>
                     <div

@@ -24,8 +24,6 @@ const MainKeywordForm = ({ keyword_props }) => {
   const [cookiesList, setCookiesList] = useState(initialCookieList);
   const [keywordFormVal, setKeywordFormVal] = useState(keywords.keyword);
 
-  console.log(cookiesList);
-
   function selectKeywordList(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
@@ -41,7 +39,6 @@ const MainKeywordForm = ({ keyword_props }) => {
   function handleKeyword(e) {
     const key = e.target.id;
     const value = e.target.value;
-
     var regexp = new RegExp(value, 'i');
 
     if (!cookies.name == false) {
@@ -102,8 +99,6 @@ const MainKeywordForm = ({ keyword_props }) => {
   useEffect(() => {
     setCookiesList(initialCookieList);
   }, [cookies]);
-
-  
 
   return (
     <>
@@ -171,8 +166,7 @@ const MainKeywordForm = ({ keyword_props }) => {
                   <AiOutlineClose />
                 </button>
               </div>
-              <div className="flex items-center px-4 py-2 ">
-                <div>
+              <div className="flex items-center px-4 py-2 w-full ">
                   <p className="hidden text-sm font-semibold sm:block">
                     キーワード
                   </p>
@@ -187,7 +181,6 @@ const MainKeywordForm = ({ keyword_props }) => {
                     ref={keyword_ref2}
                     onChange={handleKeyword}
                   />
-                </div>
               </div>
               {!cookiesList && <div className="border-b sm:hidden"></div>}
 
