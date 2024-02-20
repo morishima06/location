@@ -4,7 +4,7 @@ const HomeContent = ({ keywords, brands, prefuctures }) => {
 
   return (
     <div
-      className="sm:bg-[url(./images/background-top.jpg)] flex  h-[400px] w-full items-center  justify-center  bg-center bg-no-repeat sm:h-[437px] "
+      className="bg-[url(./images/background-top.jpg)] flex  h-[400px] w-full items-center  justify-center  bg-center bg-no-repeat sm:h-[437px] "
     >
       <div className="w-full px-1 sm:max-w-[800px] sm:px-0 ">
         <div className="flex justify-center ">
