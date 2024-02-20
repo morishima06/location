@@ -1,17 +1,19 @@
 import FrontForm from '../organisms/FrontForm';
 
 const HomeContent = ({ keywords, brands, prefuctures }) => {
+  console.log(import.meta.env.VITE_GOOGLE_MAP_API_KEY);
 
   return (
     <div
-      className="bg-[url(./images/background-top.jpg)] flex  h-[400px] w-full items-center  justify-center  bg-center bg-no-repeat sm:h-[437px] "
+      style={{ backgroundImage: `` }}
+      className="bg-[url(./images/background-top.jpg)] flex  h-[400px] w-full items-center  justify-center  bg-center bg-no-repeat sm:h-[437px]   "
     >
       <div className="w-full px-1 sm:max-w-[800px] sm:px-0 ">
         <div className="flex justify-center ">
           <img
             src="./images/front_subject.svg"
             alt=""
-            className="mb-2  hidden sm:block sm:w-[740px] "
+            className="mb-2  hidden sm:block sm:w-[740px]   "
           />
           <div className="w-full sm:hidden ">
             <h2 className="text-[38px] font-semibold  italic text-white">
