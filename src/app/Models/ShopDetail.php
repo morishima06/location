@@ -22,7 +22,6 @@ class ShopDetail extends Model
     }
     public function shops()
     {
-
         return $this->belongsTo('App\Models\Shop');
     }
 }

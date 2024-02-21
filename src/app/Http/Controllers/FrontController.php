@@ -77,17 +77,18 @@ class FrontController extends Controller
 
         $keywords['address'] = $code;
         $info = DB::table('shops as s')
-            ->select(DB::raw('s.id,s.name ,
-                          group_concat(DISTINCT sd.tel)as tel,group_concat(DISTINCT sort_id) as sort_id,
-                          group_concat(DISTINCT sd.regular_holiday) as holiday,
-                          group_concat(DISTINCT sd.business_hours) as hour,
-                          group_concat(DISTINCT ss.name) as sort_name,
-                          group_concat(DISTINCT ad.state) as state,group_concat(DISTINCT ad.nearest_station) as station,
-                           group_concat(DISTINCT ad.city) as city,group_concat(DISTINCT ad.address) as address,
-                          group_concat(DISTINCT ad.state_code) as state_code,
-                          group_concat(DISTINCT ar.name) as area_name, group_concat(DISTINCT ar.area_code) as area_code,
-                          group_concat(b.name )as brand_name
-                          '))
+            ->select(DB::raw(
+                's.id,s.name ,
+                group_concat(DISTINCT sd.tel)as tel,group_concat(DISTINCT sort_id) as sort_id,
+                group_concat(DISTINCT sd.regular_holiday) as holiday,
+                group_concat(DISTINCT sd.business_hours) as hour,
+                group_concat(DISTINCT ss.name) as sort_name,
+                group_concat(DISTINCT ad.state) as state,group_concat(DISTINCT ad.nearest_station) as station,
+                 group_concat(DISTINCT ad.city) as city,group_concat(DISTINCT ad.address) as address,
+                group_concat(DISTINCT ad.state_code) as state_code,
+                group_concat(DISTINCT ar.name) as area_name, group_concat(DISTINCT ar.area_code) as area_code,
+                group_concat(b.name )as brand_name'
+            ))
             ->leftJoin('shop_details as sd', function ($join) {
                 $join->on('s.id', '=', 'sd.shop_id');
             })

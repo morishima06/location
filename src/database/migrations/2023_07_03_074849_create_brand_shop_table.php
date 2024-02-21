@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('shop_id')->unsigned()->constrained()->cascadeOnDelete();;
             $table->bigInteger('brand_id')->unsigned()->constrained()->cascadeOnDelete();;
-
             //外部キー制約
             $table->foreign('shop_id')
                 ->references('id')
