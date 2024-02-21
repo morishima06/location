@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import { UserCount } from '../organisms/SearchResult';
 const ShopList = ({ res }) => {
   const { setPlace, setMapInfo } = useContext(UserCount);
-
   const [toggle, setToggle] = useState(false);
   const [selected, setSelected] = useState(false);
   const [heightEl, setHeightEl] = useState();
@@ -13,8 +12,6 @@ const ShopList = ({ res }) => {
   const toggleState = () => {
     setToggle(!toggle);
   };
-
-  console.log(res);
 
   const handleaddress = (e) => {
     let shop_name = e.currentTarget.getAttribute('data-shop_name');

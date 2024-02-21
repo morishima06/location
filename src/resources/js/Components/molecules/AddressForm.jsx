@@ -16,7 +16,6 @@ const AddressForm = ({ address_props }) => {
   const [addressFormVal, setAddressFormVal] = useState('');
 
   const handleAddressForm2 = (index) => {
-    console.log(index);
     setIsOpen((prevState) => ({
       ...prevState,
       [index]: !prevState[index],

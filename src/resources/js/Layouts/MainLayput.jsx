@@ -1,4 +1,3 @@
-// import SearchContetnt from "@/Components/SearchContent";
 import MainHeader from '@/Components/organisms/MainHeader';
 import Footer from '@/Components/organisms/Footer';
 

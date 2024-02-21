@@ -3,9 +3,7 @@ import SearchContent from '@/Components/templates/SearchContent';
 import { Head } from '@inertiajs/react';
 const Result = (props) => {
   const { keywords, brands, prefuctures, info } = props;
-
   const { keyword, brand, address } = keywords;
-
   const title = `「${keyword ? ' ' + keyword : ''}${brand ? ' ' + brand : ''}${
     address.name ? ' ' + address.name : ''
   }」検索結果`;

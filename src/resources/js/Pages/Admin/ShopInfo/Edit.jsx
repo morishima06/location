@@ -11,9 +11,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   const tel2 = splitTel[1];
   const tel3 = splitTel[2];
   const zip = shopInfo[0].zip.replace('-', '');
-  console.log(shopInfo)
-
-  console.log(shopInfo[0].zip);
 
   const {
     shop_id,
@@ -31,8 +28,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     area_name,
     area_code,
   } = shopInfo[0];
-
-  console.log(detail_brands);
 
   const [values, setValues] = useState({
     shop_id: shop_id,
@@ -60,10 +55,7 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     regular_holiday: regular_holiday,
   });
 
-  console.log(values);
-
   function handleValue(e) {
-    console.log(e.target.value);
     const key = e.target.id;
     const value = e.target.value;
     setValues((values) => ({
@@ -75,19 +67,17 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   const searchAddress = (e) => {
     e.preventDefault();
 
-
     fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${values.zip_code}`)
       .then((res) => res.json())
       .then(
         (json) => (
-          console.log(json),
           setValues((values) => ({
             ...values,
             ['state']: json.results[0].address1,
             ['city']: json.results[0].address2,
             ['address']: json.results[0].address3,
             ['state_code']: areaCode[json.results[0].address1],
-                  ['area_code']: '',
+            ['area_code']: '',
 
           })),
           getAreaCode(areaCode[json.results[0].address1])
@@ -109,7 +99,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     fetch(url + query_params)
       .then((response) => response.json())
       .then((json) => {
-        console.log(json.new_area_code.area_code);
         setAreaData(json.area_code);
           setValues((values) => ({
             ...values,
@@ -121,8 +110,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   const handleSelect = (e) => {
     const val = e.target.value;
-    console.log(888)
-    console.log(val);
 
     handleValue(e);
     setValues((values) => ({
@@ -186,8 +173,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   //   エリア選択のデータ
   const [areaData, setAreaData] = useState('');
-  console.log(areaData);
-
   const [detailBrand, setDetailBrand] = useState({
     id: '',
     name: '',
@@ -195,8 +180,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   const [initialBrandList, setInitialBrandList] = useState('');
   const [brandList, setBrandList] = useState(initialBrandList);
-  console.log(brandList);
-
   const [isBrandList, setIsBrandList] = useState(false);
 
   const handleBrandForm = (e) => {
@@ -206,11 +189,9 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     const filterBrand = initialBrandList.filter((v) => {
       return v.name.match(regexp);
     });
-    console.log(filterBrand);
     const limitNumberBrand = filterBrand.filter((v, index) => {
       return index < 6;
     });
-    console.log(limitNumberBrand);
     setBrandList(limitNumberBrand);
   };
 
@@ -228,12 +209,8 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
       ['id']: brand_id,
       ['name']: value,
     }));
-
     setIsBrandList(true);
   }
-
-  console.log(detailBrand);
-  console.log(values.brand);
 
   function brandIn(e) {
     e.preventDefault();
@@ -252,8 +229,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   const rmDetailBrand = (e) => {
     e.preventDefault();
     const key = e.target.getAttribute('data-key');
-    console.log(key);
-    console.log(7777777);
     values.brand.splice(key, 1);
     setValues((values) => ({
       ...values,
@@ -320,7 +295,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         getAreaCode(values.state);
         setValues((values) => ({
           ...values,
@@ -349,7 +323,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json);
         getBrand();
         setValues((values) => ({
           ...values,
@@ -379,21 +352,10 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     router.post('/shopInfo/edit_check', values);
   }
 
-  console.log(values);
-
-
-
-
     useEffect(() => {
       getBrand();
       getAreaCode(values.state_code)
   }, []);
-
-      const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"
-
-
-
-  console.log(url);
 
   return (
     <>

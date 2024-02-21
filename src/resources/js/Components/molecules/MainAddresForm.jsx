@@ -14,11 +14,9 @@ const MainAddressForm = ({ address_props }) => {
 
   const addressRef = useRef(null);
   const [isOpen, setIsOpen] = useState({ 0: false });
-  console.log(prefuctures);
   const [addressFormVal, setAddressFormVal] = useState(keywords.address.name);
 
   const handleAddressForm2 = (index) => {
-    console.log(index);
     setIsOpen((prevState) => ({
       ...prevState,
       [index]: !prevState[index],
@@ -70,7 +68,6 @@ const MainAddressForm = ({ address_props }) => {
   const MobileInnerHeightStyle = {
   height : MobileInnerHeight
   }
-
 
   return (
     <>

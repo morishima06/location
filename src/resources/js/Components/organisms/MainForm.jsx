@@ -30,7 +30,6 @@ const MainForm = ({ brands, prefuctures, keywords }) => {
     setBrandFormActive,
     setAddressFormActive,
   };
-  console.log(keyword_props);
 
   const brand_props = {
     keywords,

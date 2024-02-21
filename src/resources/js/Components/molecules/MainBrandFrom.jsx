@@ -12,17 +12,6 @@ const MainBrandForm = ({ brand_props }) => {
     setAddressFormActive,
   } = brand_props;
   
-//   function setHeight() {
-//   let vh = window.innerHeight * 0.01;
-//   document.documentElement.style.setProperty('--vh', `${vh}px`);
-//   console.log(vh)
-// }
-
-// // 2.初期化
-// setHeight();
-  
-
-
   const [brandList, setBrandList] = useState(brands);
   const [brandFormVal, setBrandFormVal] = useState(keywords.brand);
 

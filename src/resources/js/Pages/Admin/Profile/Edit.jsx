@@ -9,10 +9,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
   return (
     <>
       <Head title="店舗作成" />
-
       <Header />
-
-
     <AuthenticatedLayout
       auth={auth}
       header={

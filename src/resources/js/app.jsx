@@ -6,7 +6,6 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { CookiesProvider } from 'react-cookie';
 
-
 const appName =
   window.document.getElementsByTagName('title')[0]?.innerText || 'Location';
 
