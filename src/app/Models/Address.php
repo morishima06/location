@@ -14,12 +14,10 @@ class Address extends Model
     ];
     public function shops()
     {
-
         return $this->belongsTo('App\Models\Shop');
     }
     public function areas()
     {
-
         return $this->belongsTo('App\Models\Area');
     }
 }

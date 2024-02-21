@@ -12,7 +12,6 @@ class Shop extends Model
     protected $fillable = [
         'name',
         'sort_id',
-
     ];
 
     public function brands()
@@ -23,7 +22,6 @@ class Shop extends Model
     {
         return $this->hasOne('App\Models\Address');
     }
-
     public function shop_details()
     {
         return $this->hasOne('App\Models\ShopDetail');

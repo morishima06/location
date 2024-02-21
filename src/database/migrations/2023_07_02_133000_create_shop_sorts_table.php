@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('shop_sorts', function (Blueprint $table) {
             $table->bigIncrements('id')->unique();
             $table->string('name');
-
-
         });
     }
 

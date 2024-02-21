@@ -17,13 +17,9 @@ return new class extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('area_code');
-
-            
-            
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

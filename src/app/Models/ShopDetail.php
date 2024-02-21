@@ -14,15 +14,12 @@ class ShopDetail extends Model
         'business_hours',
         'regular_holiday',
         'sort_id',
-
     ];
-
     public function shop_sort()
     {
 
         return $this->belongsTo('App\Models\ShopSort');
     }
-
     public function shops()
     {
 

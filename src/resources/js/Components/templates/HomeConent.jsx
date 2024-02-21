@@ -1,7 +1,6 @@
 import FrontForm from '../organisms/FrontForm';
 
 const HomeContent = ({ keywords, brands, prefuctures }) => {
-  console.log(import.meta.env.VITE_GOOGLE_MAP_API_KEY);
 
   return (
     <div

@@ -11,16 +11,11 @@ class ShopSort extends Model
     protected $fillable = [
         'id',
         'name',
-        
     ];
     public $timestamps = false;
 
     public function shop_details()
     {
-
         return $this->hasMany('App\Models\ShopDetail');
     }
-
-
-
 }

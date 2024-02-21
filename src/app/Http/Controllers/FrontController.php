@@ -19,7 +19,6 @@ class FrontController extends Controller
             ->groupBy('state_code', 'state')
             ->orderBy('state_code', 'asc')
             ->get()->toArray();
-        
 
         $areas =  DB::table('addresses as ad')
             ->select(DB::raw('ad.area_id,ad.state, a.name,ad.state_code,count(area_code) as count,area_code '))

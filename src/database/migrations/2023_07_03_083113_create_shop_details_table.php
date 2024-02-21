@@ -20,20 +20,14 @@ return new class extends Migration
             $table->string('business_hours');
             $table->string('regular_holiday');
             $table->unsignedBigInteger('sort_id');
-
             $table->foreign('shop_id')
-            ->references('id')
-            ->on('shops')
-            ->onDelete('cascade');
-
-
+                ->references('id')
+                ->on('shops')
+                ->onDelete('cascade');
             $table->foreign('sort_id')
-            ->references('id')
-            ->on('shop_sorts')
-            ->onDelete('cascade');
-
-
-
+                ->references('id')
+                ->on('shop_sorts')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

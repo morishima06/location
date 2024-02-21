@@ -23,15 +23,12 @@ return new class extends Migration
             $table->string('address');
             $table->string('nearest_station');
             $table->bigInteger('area_id')->unsigned();
-
             $table->timestamps();
-
             //外部キー制約
             $table->foreign('shop_id')
                 ->references('id')
                 ->on('shops')
                 ->onDelete('cascade');
-
             //外部キー制約
             $table->foreign('area_id')
                 ->references('id')
