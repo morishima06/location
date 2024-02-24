@@ -18,7 +18,7 @@ const FrontForm = ({ brands, prefuctures }) => {
   const [brandFormActive, setBrandFormActive] = useState(false);
   const [addressFormActive, setAddressFormActive] = useState(false);
 
-  // キーワードフォームへのprop
+  // キーワードフォームへのprops
   const keyword_props = {
     setValues,
     cookies,
@@ -30,7 +30,7 @@ const FrontForm = ({ brands, prefuctures }) => {
     setAddressFormActive,
   };
 
-  //ブランドフォームへのprop
+  //ブランドフォームへのprops
   const brand_props = {
     setValues,
     brands,
@@ -40,7 +40,7 @@ const FrontForm = ({ brands, prefuctures }) => {
     setAddressFormActive,
   };
 
-  //addressフォームへのprop
+  //addressフォームへのprops
   const address_props = {
     setValues,
     prefuctures,

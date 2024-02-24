@@ -42,6 +42,8 @@ const KeywordForm = ({ keyword_props }) => {
         return index < 5;
       });
 
+      console.log(limitNumberCookie);
+
       setCookiesList(limitNumberCookie);
     }
 
@@ -62,6 +64,8 @@ const KeywordForm = ({ keyword_props }) => {
       const limitNumberCookie = filterCookiesList.filter((cookie, index) => {
         return index < 5;
       });
+
+      console.log(limitNumberCookie);
 
       setCookiesList(limitNumberCookie);
     }
@@ -115,7 +119,7 @@ const KeywordForm = ({ keyword_props }) => {
 
   return (
     <>
-    {/* キーワード */}
+      {/* キーワード */}
       <div
         className=" mb-1 flex h-[40px]  w-full items-center overflow-hidden rounded-lg bg-white sm:relative sm:mb-0 sm:h-[45px] sm:w-1/3 sm:overflow-visible sm:rounded-r-none"
         onClick={(event) => {

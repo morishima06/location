@@ -19,6 +19,7 @@ const BrandForm = ({ brand_props }) => {
   const brand_ref1 = useRef(null);
   const brand_ref2 = useRef(null);
 
+  console.log(brandFormVal);
 
   function openBrandModal(event) {
     setBrandFormActive(!brandFormActive);
@@ -64,21 +65,28 @@ const BrandForm = ({ brand_props }) => {
       ...values,
       [key]: value,
     }));
+    console.log(value);
     var regexp = new RegExp(value, 'i');
 
     const filterBrands = brands.filter((brand) => {
       return brand.name.match(regexp);
     });
+    console.log(filterBrands);
     setBrandList(filterBrands);
+
     setBrandFormVal(value);
+
     setBrandFormActive(false);
+    console.log(brandFormActive);
   }
 
   function handleBrandForm(e) {
     const key = e.target.id;
     const value = e.target.value;
+    console.log(key);
 
     setBrandFormVal(value);
+
     setValues((values) => ({
       ...values,
       [key]: value,
@@ -99,6 +107,7 @@ const BrandForm = ({ brand_props }) => {
   const MobileInnerHeightStyle = {
   height : MobileInnerHeight
   }
+
 
   return (
     <>

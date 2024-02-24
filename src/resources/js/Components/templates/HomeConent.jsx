@@ -1,7 +1,6 @@
 import FrontForm from '../organisms/FrontForm';
 
 const HomeContent = ({ keywords, brands, prefuctures }) => {
-
   return (
     <div
       style={{ backgroundImage: `url(./images/background-top.jpg)` }}

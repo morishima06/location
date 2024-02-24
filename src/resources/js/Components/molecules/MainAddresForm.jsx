@@ -66,8 +66,8 @@ const MainAddressForm = ({ address_props }) => {
   };
   const MobileInnerHeight = window.innerHeight - 76;
   const MobileInnerHeightStyle = {
-  height : MobileInnerHeight
-  }
+    height: MobileInnerHeight,
+  };
 
   return (
     <>
@@ -89,7 +89,7 @@ const MainAddressForm = ({ address_props }) => {
                 form="form1"
                 id="address"
                 readOnly
-                className="block  border-none bg-transparent text-xs  leading-none outline-0  placeholder:text-slate-900 placeholder:font-light"
+                className="block  border-none bg-transparent text-xs  leading-none outline-0  placeholder:font-light placeholder:text-slate-900"
                 name="address"
                 value={addressFormVal ? addressFormVal : ''}
                 ref={addressRef}
@@ -113,7 +113,7 @@ const MainAddressForm = ({ address_props }) => {
 
           {/* エリア表示 */}
           <div
-            className="absolute right-0 top-0   h- sm:h-[260px]  w-full bg-white  sm:top-14 sm:mt-0  sm:rounded-lg sm:bg-white  sm:shadow-[0px_0px_5px_1px_rgba(0,0,0,0.2)] "
+            className="h- absolute right-0   top-0 w-full  bg-white sm:top-14  sm:mt-0 sm:h-[260px]  sm:rounded-lg sm:bg-white  sm:shadow-[0px_0px_5px_1px_rgba(0,0,0,0.2)] "
             onClick={(event) => {
               event.stopPropagation();
             }}
@@ -135,62 +135,65 @@ const MainAddressForm = ({ address_props }) => {
               </button>
             </div>
 
-            <p className="  flex h-[40px] w-full justify-center items-center mb-[5px] border-b  border-slate-100  font-semibold drop-shadow-sm ">
+            <p className="  mb-[5px] flex h-[40px] w-full items-center justify-center border-b  border-slate-100  font-semibold drop-shadow-sm ">
               エリア一覧
             </p>
-            <div style={MobileInnerHeightStyle} className="overflow-scroll  sm:max-h-[220px] rounded-lg   bg-white pb-1 ">
-                {Object.keys(prefuctures).map((prefucture, index) => (
-                  <div key={index}>
+            <div
+              style={MobileInnerHeightStyle}
+              className="overflow-scroll  rounded-lg bg-white   pb-1 sm:max-h-[220px] "
+            >
+              {Object.keys(prefuctures).map((prefucture, index) => (
+                <div key={index}>
+                  <div
+                    className="flex cursor-pointer  items-center hover:bg-slate-100 "
+                    data-state_code={prefuctures[prefucture].state_code}
+                  >
                     <div
-                      className="flex cursor-pointer  items-center hover:bg-slate-100 "
-                      data-state_code={prefuctures[prefucture].state_code}
+                      className=" flex py-1 pl-3 text-[15px] hover:text-blue-500"
+                      onClick={handleAddressFormIN}
                     >
-                      <div
-                        className=" flex py-1 pl-3 text-[15px] hover:text-blue-500"
-                        onClick={handleAddressFormIN}
+                      <p
+                        id="address"
+                        className="pr-[2px]"
+                        data-adname={prefuctures[prefucture].state}
+                        data-ad_code={prefuctures[prefucture].state_code}
                       >
-                        <p
-                          id="address"
-                          className="pr-[2px]"
-                          data-adname={prefuctures[prefucture].state}
-                          data-ad_code={prefuctures[prefucture].state_code}
-                        >
-                          {prefuctures[prefucture].state}
-                          {'('}
-                          {prefuctures[prefucture].count}
-                          {')'}
-                        </p>
-                      </div>
-                      <div
-                        className="flex grow justify-end pr-4"
-                        onClick={() => handleAddressForm2(index)}
-                      >
-                        <span className="  ">+</span>
-                      </div>
+                        {prefuctures[prefucture].state}
+                        {'('}
+                        {prefuctures[prefucture].count}
+                        {')'}
+                      </p>
                     </div>
-
-                    {isOpen[index] ? (
-                      <div className="py-[2px] " onClick={handleAddressFormIN}>
-                        {isOpen[index]
-                          ? prefuctures[prefucture]['area'].map((area) => (
-                              <div
-                                className=" flex cursor-pointer py-[2px] pl-3 text-[12px] hover:text-blue-500  "
-                                id="address"
-                                data-adname={area.name}
-                                data-ad_code={area.area_code}
-                                key={area.name}
-                              >
-                                {area.name}
-                                {'('}
-                                {area.count}
-                                {')'}
-                              </div>
-                            ))
-                          : undefined}
-                      </div>
-                    ) : undefined}
+                    <div
+                      className="flex grow justify-end pr-4"
+                      onClick={() => handleAddressForm2(index)}
+                    >
+                      <span className="  ">+</span>
+                    </div>
                   </div>
-                ))}
+
+                  {isOpen[index] ? (
+                    <div className="py-[2px] " onClick={handleAddressFormIN}>
+                      {isOpen[index]
+                        ? prefuctures[prefucture]['area'].map((area) => (
+                            <div
+                              className=" flex cursor-pointer py-[2px] pl-3 text-[12px] hover:text-blue-500  "
+                              id="address"
+                              data-adname={area.name}
+                              data-ad_code={area.area_code}
+                              key={area.name}
+                            >
+                              {area.name}
+                              {'('}
+                              {area.count}
+                              {')'}
+                            </div>
+                          ))
+                        : undefined}
+                    </div>
+                  ) : undefined}
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -166,21 +166,21 @@ const MainKeywordForm = ({ keyword_props }) => {
                   <AiOutlineClose />
                 </button>
               </div>
-              <div className="flex items-center px-4 py-2 w-full ">
-                  <p className="hidden text-sm font-semibold sm:block">
-                    キーワード
-                  </p>
-                  <input
-                    form="form1"
-                    id="keyword"
-                    type=" block"
-                    placeholder="店舗名・キーワード"
-                    autoComplete="off"
-                    className="block w-full  text-lg font-semibold text-black outline-0 sm:text-sm"
-                    value={keywordFormVal ? keywordFormVal : ''}
-                    ref={keyword_ref2}
-                    onChange={handleKeyword}
-                  />
+              <div className="flex w-full items-center px-4 py-2 ">
+                <p className="hidden text-sm font-semibold sm:block">
+                  キーワード
+                </p>
+                <input
+                  form="form1"
+                  id="keyword"
+                  type=" block"
+                  placeholder="店舗名・キーワード"
+                  autoComplete="off"
+                  className="block w-full  text-lg font-semibold text-black outline-0 sm:text-sm"
+                  value={keywordFormVal ? keywordFormVal : ''}
+                  ref={keyword_ref2}
+                  onChange={handleKeyword}
+                />
               </div>
               {!cookiesList && <div className="border-b sm:hidden"></div>}
 

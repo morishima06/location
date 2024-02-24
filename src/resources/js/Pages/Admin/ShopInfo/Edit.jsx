@@ -44,7 +44,7 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     brand: detail_brands,
     area_id: area_id,
     area_code: area_code,
-    area_name:area_name,
+    area_name: area_name,
     addBrand: '',
     addKana: '',
     addArea: '',
@@ -78,7 +78,6 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
             ['address']: json.results[0].address3,
             ['state_code']: areaCode[json.results[0].address1],
             ['area_code']: '',
-
           })),
           getAreaCode(areaCode[json.results[0].address1])
         ),
@@ -88,22 +87,22 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   };
 
   const getAreaCode = (val) => {
-      const params = { // 渡したいパラメータをJSON形式で書く
+    const params = {
+      // 渡したいパラメータをJSON形式で書く
       state_code: val,
     };
-    const query_params = new URLSearchParams(params); 
+    const query_params = new URLSearchParams(params);
 
-    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getAreaCode?"
-
+    const url = import.meta.env.VITE_APP_URL + '/shopInfo/getAreaCode?';
 
     fetch(url + query_params)
       .then((response) => response.json())
       .then((json) => {
         setAreaData(json.area_code);
-          setValues((values) => ({
-            ...values,
-            ['addAreaCode']: json.new_area_code.area_code,
-          }));
+        setValues((values) => ({
+          ...values,
+          ['addAreaCode']: json.new_area_code.area_code,
+        }));
       })
       .catch(() => alert('eor'));
   };
@@ -265,7 +264,7 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   //   追加したブランドを参照するために必要な処理
   const getBrand = () => {
-    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/getBrand"
+    const url = import.meta.env.VITE_APP_URL + '/shopInfo/getBrand';
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
@@ -280,7 +279,7 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
 
   const addArea = (e) => {
     e.preventDefault();
-    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addArea"
+    const url = import.meta.env.VITE_APP_URL + '/shopInfo/addArea';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -306,8 +305,7 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
   };
 
   const addBrand = () => {
-
-    const url =  import.meta.env.VITE_APP_URL + "/shopInfo/addBrand"
+    const url = import.meta.env.VITE_APP_URL + '/shopInfo/addBrand';
 
     fetch(url, {
       method: 'POST',
@@ -352,9 +350,9 @@ const Edit = ({ shopInfo, detail_brands, auth, errors }) => {
     router.post('/shopInfo/edit_check', values);
   }
 
-    useEffect(() => {
-      getBrand();
-      getAreaCode(values.state_code)
+  useEffect(() => {
+    getBrand();
+    getAreaCode(values.state_code);
   }, []);
 
   return (

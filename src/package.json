@@ -3,7 +3,6 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "heroku-postbuild": "npm run build",
     "format": "prettier --write './resources/**/*jsx'",
     "lint": "eslint ./resources/**/*jsx"
   },

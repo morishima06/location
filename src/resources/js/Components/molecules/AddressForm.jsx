@@ -64,8 +64,8 @@ const AddressForm = ({ address_props }) => {
   };
   const MobileInnerHeight = window.innerHeight - 76;
   const MobileInnerHeightStyle = {
-  height : MobileInnerHeight
-  }
+    height: MobileInnerHeight,
+  };
 
   return (
     <>
@@ -132,10 +132,13 @@ const AddressForm = ({ address_props }) => {
                 </button>
               </div>
 
-              <p className="flex w-full h-[40px] mb-[5px] items-center justify-center border-b border-slate-100  font-semibold drop-shadow-sm ">
+              <p className="mb-[5px] flex h-[40px] w-full items-center justify-center border-b border-slate-100  font-semibold drop-shadow-sm ">
                 エリア一覧
               </p>
-              <div style={MobileInnerHeightStyle} className="overflow-scroll  sm:max-h-[300px]">
+              <div
+                style={MobileInnerHeightStyle}
+                className="overflow-scroll  sm:max-h-[300px]"
+              >
                 {Object.keys(prefuctures).map((key, index) => (
                   <div key={index}>
                     <div
