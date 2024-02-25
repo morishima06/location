@@ -29,16 +29,16 @@ const BrandForm = ({ brand_props }) => {
     }, []);
     return size;
   };
-  const windowWidthCheck = () => {
+  const windowStyleStatic = () => {
+      document.body.style.position = 'static';
+  };
+    const windowStyleAuto = () => {
     if (window.innerWidth > 640) {
-      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
     }
   };
-  const windowStyleAuto = ()=>{
-    const style =  document.body.style.overflow = 'auto';
-    return style
-  }
-  windowWidthCheck();
+  windowStyleAuto()
+
   const [windowWidth] = useWindowSize();
 
 
@@ -50,9 +50,7 @@ const BrandForm = ({ brand_props }) => {
     setKeywordFormActive(false);
     setAddressFormActive(false);
      document.addEventListener('click', closeBrandModal);
-    if (windowWidth < 640) {
-      document.body.style.overflow = 'hidden';
-    }
+      document.body.style.position = 'fixed';
 
     document.addEventListener('click', closeBrandModal);
     event.stopPropagation();
@@ -61,7 +59,7 @@ const BrandForm = ({ brand_props }) => {
   const closeBrandModal = useCallback(() => {
     setBrandFormActive(false);
         if (windowWidth < 640) {
-      document.body.style.overflow = 'auto';
+      document.body.style.position = 'static';
     }
 
     document.removeEventListener('click', closeBrandModal);
@@ -92,7 +90,7 @@ const BrandForm = ({ brand_props }) => {
   function selectBrandList(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
-    document.body.style.overflow = 'auto';
+    document.body.style.position = 'auto';
 
     setValues((values) => ({
       ...values,
@@ -191,7 +189,7 @@ const BrandForm = ({ brand_props }) => {
                   type="button"
                   onClick={() => {
                     setBrandFormActive(false);
-                    windowStyleAuto();
+                    windowStyleStatic();
                   }}
                   className="mr-1 mt-2 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
                 >
