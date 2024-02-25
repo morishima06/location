@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback,useLayoutEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const BrandForm = ({ brand_props }) => {
@@ -16,15 +16,43 @@ const BrandForm = ({ brand_props }) => {
   const [brandList, setBrandList] = useState(brands);
   const [brandFormVal, setBrandFormVal] = useState('');
 
-  const brand_ref1 = useRef(null);
-  const brand_ref2 = useRef(null);
+  // 動的にwindowサイズを取得
+  const useWindowSize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      const updateSize = () => {
+        setSize([window.innerWidth]);
+      };
+      window.addEventListener('resize', updateSize);
 
-  console.log(brandFormVal);
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  };
+  const windowWidthCheck = () => {
+    if (window.innerWidth > 640) {
+      document.body.style.overflow = 'auto';
+    }
+  };
+  const windowStyleAuto = ()=>{
+    const style =  document.body.style.overflow = 'auto';
+    return style
+  }
+  windowWidthCheck();
+  const [windowWidth] = useWindowSize();
+
+
+  const brand_form_ref = useRef(null);
+  const brand_modalForm_ref = useRef(null);
 
   function openBrandModal(event) {
     setBrandFormActive(!brandFormActive);
     setKeywordFormActive(false);
     setAddressFormActive(false);
+     document.addEventListener('click', closeBrandModal);
+    if (windowWidth < 640) {
+      document.body.style.overflow = 'hidden';
+    }
 
     document.addEventListener('click', closeBrandModal);
     event.stopPropagation();
@@ -32,12 +60,16 @@ const BrandForm = ({ brand_props }) => {
 
   const closeBrandModal = useCallback(() => {
     setBrandFormActive(false);
+        if (windowWidth < 640) {
+      document.body.style.overflow = 'auto';
+    }
+
     document.removeEventListener('click', closeBrandModal);
   }, []);
 
   useEffect(() => {
     if (brandFormActive === true) {
-      brand_ref2.current.focus();
+      brand_modalForm_ref.current.focus();
     }
   }, [brandFormActive]);
 
@@ -60,33 +92,27 @@ const BrandForm = ({ brand_props }) => {
   function selectBrandList(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
+    document.body.style.overflow = 'auto';
 
     setValues((values) => ({
       ...values,
       [key]: value,
     }));
-    console.log(value);
     var regexp = new RegExp(value, 'i');
 
     const filterBrands = brands.filter((brand) => {
       return brand.name.match(regexp);
     });
-    console.log(filterBrands);
     setBrandList(filterBrands);
-
     setBrandFormVal(value);
-
     setBrandFormActive(false);
-    console.log(brandFormActive);
   }
 
   function handleBrandForm(e) {
     const key = e.target.id;
     const value = e.target.value;
-    console.log(key);
 
     setBrandFormVal(value);
-
     setValues((values) => ({
       ...values,
       [key]: value,
@@ -103,11 +129,10 @@ const BrandForm = ({ brand_props }) => {
     });
     setBrandList(filterBrands);
   }
-    const MobileInnerHeight = window.innerHeight - 76;
+  const MobileInnerHeight = window.innerHeight - 76;
   const MobileInnerHeightStyle = {
-  height : MobileInnerHeight
-  }
-
+    height: MobileInnerHeight,
+  };
 
   return (
     <>
@@ -130,7 +155,7 @@ const BrandForm = ({ brand_props }) => {
                 autoComplete="off"
                 placeholder="ブランド名"
                 value={brandFormVal ? brandFormVal : ''}
-                ref={brand_ref1}
+                ref={brand_form_ref}
                 className=" block text-sm font-medium leading-none placeholder-slate-400 outline-0 placeholder:justify-center placeholder:font-semibold"
               />
             </div>
@@ -161,11 +186,12 @@ const BrandForm = ({ brand_props }) => {
             }
           >
             <div className="mr-1 ">
-              <div className="flex w-full justify-end sm:hidden h-[30px]">
+              <div className="flex h-[30px] w-full justify-end sm:hidden">
                 <button
                   type="button"
                   onClick={() => {
                     setBrandFormActive(false);
+                    windowStyleAuto();
                   }}
                   className="mr-1 mt-2 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
                 >
@@ -181,14 +207,15 @@ const BrandForm = ({ brand_props }) => {
                   autoComplete="off"
                   className="block w-full px-4 text-lg font-semibold placeholder-slate-400 outline-0 sm:text-sm"
                   value={brandFormVal ? brandFormVal : ''}
-                  ref={brand_ref2}
+                  ref={brand_modalForm_ref}
                   onChange={handleBrandForm}
                 />
               </div>
               {brandList.length > 0 && (
-                <div style={MobileInnerHeightStyle} className=' sm:max-h-[200px] sm:h-auto overflow-scroll border-t'>
-                  
-
+                <div
+                  style={MobileInnerHeightStyle}
+                  className=" overflow-scroll border-t sm:h-auto sm:max-h-[200px]"
+                >
                   {brandList.map((list) => (
                     <p
                       className="cursor-pointer bg-white px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 "
