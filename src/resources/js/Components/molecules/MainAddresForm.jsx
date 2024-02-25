@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const MainAddressForm = ({ address_props }) => {
@@ -16,6 +22,32 @@ const MainAddressForm = ({ address_props }) => {
   const [isOpen, setIsOpen] = useState({ 0: false });
   const [addressFormVal, setAddressFormVal] = useState(keywords.address.name);
 
+  // 動的にwindowサイズを取得
+  const useWindowSize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      const updateSize = () => {
+        setSize([window.innerWidth]);
+      };
+      window.addEventListener('resize', updateSize);
+
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  };
+  const [windowWidth] = useWindowSize();
+
+  const windowStyleStatic = () => {
+    document.body.style.position = 'static';
+  };
+
+  const windowStyleAuto = () => {
+    if (windowWidth > 640) {
+      document.body.style.position = 'auto';
+    }
+  };
+  windowStyleAuto();
+
   const handleAddressForm2 = (index) => {
     setIsOpen((prevState) => ({
       ...prevState,
@@ -27,6 +59,9 @@ const MainAddressForm = ({ address_props }) => {
     setAddressFormActive(!addressFormActive);
     setKeywordFormActive(false);
     setBrandFormActive(false);
+    if (windowWidth < 640) {
+      document.body.style.position = 'fixed';
+    }
 
     document.addEventListener('click', closeAddressModal);
     event.stopPropagation();
@@ -35,6 +70,9 @@ const MainAddressForm = ({ address_props }) => {
   const closeAddressModal = useCallback(() => {
     setAddressFormActive(false);
     document.removeEventListener('click', closeAddressModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
   }, []);
 
   useEffect(() => {
@@ -55,6 +93,9 @@ const MainAddressForm = ({ address_props }) => {
     const value = e.target.getAttribute('data-adname');
     const code = e.target.getAttribute('data-ad_code');
     const key = e.target.id;
+    if (windowWidth > 640) {
+      document.body.style.position = 'static';
+    }
 
     setValues((values) => ({
       ...values,
@@ -128,6 +169,7 @@ const MainAddressForm = ({ address_props }) => {
                 type="button"
                 onClick={() => {
                   setAddressFormActive(false);
+                  windowStyleStatic();
                 }}
                 className="mr-1 mt-2 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
               >

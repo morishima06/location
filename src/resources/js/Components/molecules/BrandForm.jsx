@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback,useLayoutEffect } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const BrandForm = ({ brand_props }) => {
@@ -21,7 +27,7 @@ const BrandForm = ({ brand_props }) => {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
       const updateSize = () => {
-        setSize([window.innerWidth]);
+        setSize([windowWidth]);
       };
       window.addEventListener('resize', updateSize);
 
@@ -29,18 +35,17 @@ const BrandForm = ({ brand_props }) => {
     }, []);
     return size;
   };
+  const [windowWidth] = useWindowSize();
+
   const windowStyleStatic = () => {
-      document.body.style.position = 'static';
+    document.body.style.position = 'static';
   };
-    const windowStyleAuto = () => {
-    if (window.innerWidth > 640) {
+  const windowStyleAuto = () => {
+    if (windowWidth > 640) {
       document.body.style.position = 'static';
     }
   };
-  windowStyleAuto()
-
-  const [windowWidth] = useWindowSize();
-
+  windowStyleAuto();
 
   const brand_form_ref = useRef(null);
   const brand_modalForm_ref = useRef(null);
@@ -49,16 +54,17 @@ const BrandForm = ({ brand_props }) => {
     setBrandFormActive(!brandFormActive);
     setKeywordFormActive(false);
     setAddressFormActive(false);
-     document.addEventListener('click', closeBrandModal);
-      document.body.style.position = 'fixed';
-
     document.addEventListener('click', closeBrandModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'fixed';
+    }
+
     event.stopPropagation();
   }
 
   const closeBrandModal = useCallback(() => {
     setBrandFormActive(false);
-        if (windowWidth < 640) {
+    if (windowWidth < 640) {
       document.body.style.position = 'static';
     }
 
@@ -91,6 +97,9 @@ const BrandForm = ({ brand_props }) => {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
     document.body.style.position = 'auto';
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
 
     setValues((values) => ({
       ...values,

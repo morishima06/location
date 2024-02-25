@@ -1,4 +1,4 @@
-import MainLayout from '@/Layouts/MainLayput';
+import MainLayout from '@/Layouts/MainLayout';
 import SearchContent from '@/Components/templates/SearchContent';
 import { Head } from '@inertiajs/react';
 const Result = (props) => {

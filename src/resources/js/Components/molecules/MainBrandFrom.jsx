@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const MainBrandForm = ({ brand_props }) => {
@@ -18,17 +24,50 @@ const MainBrandForm = ({ brand_props }) => {
   const brand_ref1 = useRef(null);
   const brand_ref2 = useRef(null);
 
+  // 動的にwindowサイズを取得
+  const useWindowSize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      const updateSize = () => {
+        setSize([window.innerWidth]);
+      };
+      window.addEventListener('resize', updateSize);
+
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  };
+  const [windowWidth] = useWindowSize();
+
+  const windowStyleStatic = () => {
+    document.body.style.position = 'static';
+  };
+
+  const windowStyleAuto = () => {
+    if (windowWidth > 640) {
+      document.body.style.position = 'auto';
+    }
+  };
+  windowStyleAuto();
+
   function openBrandModal(event) {
     setBrandFormActive(!brandFormActive);
     setKeywordFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeBrandModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'fixed';
+    }
+
     event.stopPropagation();
   }
 
   const closeBrandModal = useCallback(() => {
     setBrandFormActive(false);
     document.removeEventListener('click', closeBrandModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
   }, []);
 
   useEffect(() => {
@@ -55,6 +94,9 @@ const MainBrandForm = ({ brand_props }) => {
   function selectBrandList(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
 
     setValues((values) => ({
       ...values,
@@ -158,6 +200,7 @@ const MainBrandForm = ({ brand_props }) => {
                   type="button"
                   onClick={() => {
                     setBrandFormActive(false);
+                    windowStyleStatic();
                   }}
                   className="mr-1 mt-1 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
                 >

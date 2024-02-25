@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback,useLayoutEffect } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const KeywordForm = ({ keyword_props }) => {
@@ -12,8 +18,33 @@ const KeywordForm = ({ keyword_props }) => {
     setAddressFormActive,
   } = keyword_props;
 
-  const keyword_form_ref = useRef(null);
-  const keyword_modalForm_ref = useRef(null);
+  // 動的にwindowサイズを取得
+  const useWindowSize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      const updateSize = () => {
+        setSize([window.innerWidth]);
+      };
+      window.addEventListener('resize', updateSize);
+
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  };
+
+  const [windowWidth] = useWindowSize();
+  const windowStyleStatic = () => {
+    document.body.style.position = 'static';
+  };
+  const windowStyleAuto = () => {
+    if (windowWidth > 640) {
+      document.body.style.position = 'static';
+    }
+  };
+  windowStyleAuto();
+
+  const keyword_ref1 = useRef(null);
+  const keyword_ref2 = useRef(null);
   const initialCookieList = cookies.name
     ? cookies.name.filter((cookie, index) => {
         return index < 5;
@@ -23,30 +54,12 @@ const KeywordForm = ({ keyword_props }) => {
   const [cookiesList, setCookiesList] = useState(initialCookieList);
   const [keywordFormVal, setKeywordFormVal] = useState('');
 
-  // 動的にwindowサイズを取得
-  const useWindowSize = () => {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-        const updateSize = () => {
-            setSize([window.innerWidth]);
-        };
-
-        window.addEventListener("resize", updateSize);
-
-        return () => window.removeEventListener("resize", updateSize);
-    }, []);
-    return size;
-};
-
-
-const [windowWidth] = useWindowSize();
-
-console.log(windowWidth)
-
   function handleKeywordSelect(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
-    document.body.style.overflow = "auto";
+    if (window.innerWidth < 640) {
+      document.body.style.position = 'static';
+    }
 
     setValues((values) => ({
       ...values,
@@ -62,8 +75,12 @@ console.log(windowWidth)
       const limitNumberCookie = filterCookiesList.filter((cookie, index) => {
         return index < 5;
       });
+
+      console.log(limitNumberCookie);
+
       setCookiesList(limitNumberCookie);
     }
+
     setKeywordFormVal(value);
     setKeywordFormActive(false);
   }
@@ -71,8 +88,8 @@ console.log(windowWidth)
   function handleKeyword(e) {
     const key = e.target.id;
     const value = e.target.value;
+
     var regexp = new RegExp(value, 'i');
-    document.body.style.overflow = "auto";
 
     if (!cookies.name == false) {
       const filterCookiesList = cookies.name.filter((cookie) => {
@@ -81,6 +98,9 @@ console.log(windowWidth)
       const limitNumberCookie = filterCookiesList.filter((cookie, index) => {
         return index < 5;
       });
+
+      console.log(limitNumberCookie);
+
       setCookiesList(limitNumberCookie);
     }
 
@@ -96,25 +116,24 @@ console.log(windowWidth)
     setBrandFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeKeywordModal);
-    if(windowWidth < 640){
-          document.body.style.overflow = "hidden";
-          }
+    if (windowWidth < 640) {
+      document.body.style.position = 'fixed';
+    }
+
     event.stopPropagation();
   }
 
   const closeKeywordModal = useCallback(() => {
     setKeywordFormActive(false);
-        if(windowWidth < 640){
-          document.body.style.overflow = "auto";
-          }
-
-
     document.removeEventListener('click', closeKeywordModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
   }, []);
 
   useEffect(() => {
     if (keywordFormActive === true) {
-      keyword_modalForm_ref.current.focus();
+      keyword_ref2.current.focus();
     }
   }, [keywordFormActive]);
 
@@ -139,11 +158,9 @@ console.log(windowWidth)
     setCookiesList(initialCookieList);
   }, [cookies]);
 
-
-
   return (
     <>
-    {/* キーワード */}
+      {/* キーワード */}
       <div
         className=" mb-1 flex h-[40px]  w-full items-center overflow-hidden rounded-lg bg-white sm:relative sm:mb-0 sm:h-[45px] sm:w-1/3 sm:overflow-visible sm:rounded-r-none"
         onClick={(event) => {
@@ -160,7 +177,7 @@ console.log(windowWidth)
                 readOnly
                 placeholder="店舗名・キーワード"
                 value={keywordFormVal}
-                ref={keyword_form_ref}
+                ref={keyword_ref1}
                 className="block text-sm font-medium leading-none placeholder-slate-400  outline-0 placeholder:justify-center placeholder:font-semibold"
               />
             </div>
@@ -198,6 +215,7 @@ console.log(windowWidth)
                   type="button"
                   onClick={() => {
                     setKeywordFormActive(false);
+                    windowStyleStatic();
                   }}
                   className="mr-1 mt-2 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
                 >
@@ -213,7 +231,7 @@ console.log(windowWidth)
                   autoComplete="off"
                   className="block w-full px-4   text-lg font-semibold outline-0 placeholder:text-slate-400 sm:text-sm"
                   value={keywordFormVal}
-                  ref={keyword_modalForm_ref}
+                  ref={keyword_ref2}
                   onChange={handleKeyword}
                 />
               </div>

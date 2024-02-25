@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 const MainKeywordForm = ({ keyword_props }) => {
@@ -12,6 +18,32 @@ const MainKeywordForm = ({ keyword_props }) => {
     setBrandFormActive,
     setAddressFormActive,
   } = keyword_props;
+
+  // 動的にwindowサイズを取得
+  const useWindowSize = () => {
+    const [size, setSize] = useState([0, 0]);
+    useLayoutEffect(() => {
+      const updateSize = () => {
+        setSize([window.innerWidth]);
+      };
+      window.addEventListener('resize', updateSize);
+
+      return () => window.removeEventListener('resize', updateSize);
+    }, []);
+    return size;
+  };
+  const [windowWidth] = useWindowSize();
+
+  const windowStyleStatic = () => {
+    document.body.style.position = 'static';
+  };
+
+  const windowStyleAuto = () => {
+    if (windowWidth > 640) {
+      document.body.style.position = 'static';
+    }
+  };
+  windowStyleAuto();
 
   const keyword_ref1 = useRef(null);
   const keyword_ref2 = useRef(null);
@@ -27,6 +59,9 @@ const MainKeywordForm = ({ keyword_props }) => {
   function selectKeywordList(e) {
     const key = e.target.id;
     const value = e.target.getAttribute('data-name');
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
 
     setValues((values) => ({
       ...values,
@@ -64,12 +99,19 @@ const MainKeywordForm = ({ keyword_props }) => {
     setBrandFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeKeywordModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'fixed';
+    }
+
     event.stopPropagation();
   }
 
   const closeKeywordModal = useCallback(() => {
     setKeywordFormActive(false);
     document.removeEventListener('click', closeKeywordModal);
+    if (windowWidth < 640) {
+      document.body.style.position = 'static';
+    }
   }, []);
 
   useEffect(() => {
@@ -160,6 +202,7 @@ const MainKeywordForm = ({ keyword_props }) => {
                   type="button"
                   onClick={() => {
                     setKeywordFormActive(false);
+                    windowStyleStatic();
                   }}
                   className="mr-1 mt-1 flex h-6 w-6 items-center justify-center rounded-sm hover:bg-slate-300"
                 >
