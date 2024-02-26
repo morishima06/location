@@ -32,20 +32,25 @@ const MainBrandForm = ({ brand_props }) => {
         setSize([window.innerWidth]);
       };
       window.addEventListener('resize', updateSize);
+      updateSize();
 
       return () => window.removeEventListener('resize', updateSize);
     }, []);
     return size;
   };
   const [windowWidth] = useWindowSize();
+  console.log(windowWidth)
 
   const windowStyleStatic = () => {
+        if (windowWidth < 640) {
+
     document.body.style.position = 'static';
+        }
   };
 
   const windowStyleAuto = () => {
     if (windowWidth > 640) {
-      document.body.style.position = 'auto';
+      document.body.style.position = 'static';
     }
   };
   windowStyleAuto();
@@ -55,7 +60,8 @@ const MainBrandForm = ({ brand_props }) => {
     setKeywordFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeBrandModal);
-    if (windowWidth < 640) {
+    console.log(windowWidth)
+    if (windowWidth > 640) {
       document.body.style.position = 'fixed';
     }
 

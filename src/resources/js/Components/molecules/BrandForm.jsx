@@ -27,9 +27,12 @@ const BrandForm = ({ brand_props }) => {
     const [size, setSize] = useState([0, 0]);
     useLayoutEffect(() => {
       const updateSize = () => {
-        setSize([windowWidth]);
+        setSize([window.innerWidth]);
       };
       window.addEventListener('resize', updateSize);
+      updateSize();
+      
+      
 
       return () => window.removeEventListener('resize', updateSize);
     }, []);
@@ -38,10 +41,13 @@ const BrandForm = ({ brand_props }) => {
   const [windowWidth] = useWindowSize();
 
   const windowStyleStatic = () => {
+        if (windowWidth > 640) {
+
     document.body.style.position = 'static';
+    }
   };
   const windowStyleAuto = () => {
-    if (windowWidth > 640) {
+    if (windowWidth < 640) {
       document.body.style.position = 'static';
     }
   };

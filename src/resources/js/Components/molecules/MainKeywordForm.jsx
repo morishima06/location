@@ -27,6 +27,7 @@ const MainKeywordForm = ({ keyword_props }) => {
         setSize([window.innerWidth]);
       };
       window.addEventListener('resize', updateSize);
+      updateSize();
 
       return () => window.removeEventListener('resize', updateSize);
     }, []);
@@ -209,7 +210,7 @@ const MainKeywordForm = ({ keyword_props }) => {
                   <AiOutlineClose />
                 </button>
               </div>
-              <div className="flex w-full items-center px-4 py-2 ">
+              <div className=" w-full items-center px-4 py-2 ">
                 <p className="hidden text-sm font-semibold sm:block">
                   キーワード
                 </p>
