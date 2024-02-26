@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 
 export default function MapRoute(props) {
   const searchRef = useRef(null);
-
   const lat = props.lat;
   const lng = props.lng;
 
@@ -20,6 +19,7 @@ export default function MapRoute(props) {
         <div className="ml-2 mt-2 bg-white p-1">
           <p>{props.MapInfo.shop_name}</p>
           <p>
+            {props.MapInfo.name}<br/>
             {props.MapInfo.state}
             {props.MapInfo.city}
             {props.MapInfo.address}

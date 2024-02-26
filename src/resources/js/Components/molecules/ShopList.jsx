@@ -12,6 +12,7 @@ const ShopList = ({ res }) => {
   const toggleState = () => {
     setToggle(!toggle);
   };
+  console.log(res)
 
   const handleaddress = (e) => {
     let shop_name = e.currentTarget.getAttribute('data-shop_name');
@@ -78,7 +79,10 @@ const ShopList = ({ res }) => {
         <div className="flex">
           <div>
             <h3 className=" text-[14px] font-semibold ">{res.name}</h3>
-            <p className="mt-1 text-[12px]">最寄駅 : {res.station}</p>
+            <p className="mt-1 text-[12px]">
+              アクセス:{res.station}<br/>
+              営業時間:{res.hour}
+            </p>
           </div>
 
           <div className=" ml-auto mr-2 flex items-center hover:text-amber-500">
@@ -104,11 +108,9 @@ const ShopList = ({ res }) => {
         >
           <p className={toggle ? '   block' : '  hidden'}>
             <br />
-            {res.state + res.city + res.address}
+            住所:{res.state + res.city + res.address}
             <br />
             tel:{res.tel}
-            <br />
-            営業時間:{res.hour}
             <br />
             定休日:{res.holiday}曜日
             <br />
