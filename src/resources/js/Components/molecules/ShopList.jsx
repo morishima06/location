@@ -14,12 +14,12 @@ const ShopList = ({ res }) => {
   };
 
   const handleaddress = (e) => {
-    let shop_name = e.currentTarget.getAttribute('data-shop_name');
+    let name = e.currentTarget.getAttribute('name');
     let state = e.currentTarget.getAttribute('data-state');
     let city = e.currentTarget.getAttribute('data-city');
     let address = e.currentTarget.getAttribute('data-address');
     let tel = e.currentTarget.getAttribute('data-tel');
-    setPlace(shop_name + state + city + address);
+    setPlace(name + state + city + address);
     let handle_info = new Object();
     handle_info.shop_name = shop_name;
     handle_info.state = state;
@@ -65,7 +65,7 @@ const ShopList = ({ res }) => {
         ref={insideRef}
         style={{ backgroundColor: selected ? '#E2E8F0' : '' }}
         className="mb-[-1px] cursor-pointer border-y   border-slate-400 py-2  pl-1 text-xs  text-slate-900 hover:bg-slate-50 "
-        data-shop_name={res.name}
+        data-name={res.name}
         data-state={res.state}
         data-city={res.city}
         data-address={res.address}
