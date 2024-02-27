@@ -39,7 +39,6 @@ const MainBrandForm = ({ brand_props }) => {
     return size;
   };
   const [windowWidth] = useWindowSize();
-  console.log(windowWidth)
 
   const windowStyleStatic = () => {
         if (windowWidth < 640) {
@@ -60,7 +59,6 @@ const MainBrandForm = ({ brand_props }) => {
     setKeywordFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeBrandModal);
-    console.log(windowWidth)
     if (windowWidth > 640) {
       document.body.style.position = 'fixed';
     }

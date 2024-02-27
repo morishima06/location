@@ -77,8 +77,6 @@ const KeywordForm = ({ keyword_props }) => {
         return index < 5;
       });
 
-      console.log(limitNumberCookie);
-
       setCookiesList(limitNumberCookie);
     }
 
@@ -99,8 +97,6 @@ const KeywordForm = ({ keyword_props }) => {
       const limitNumberCookie = filterCookiesList.filter((cookie, index) => {
         return index < 5;
       });
-
-      console.log(limitNumberCookie);
 
       setCookiesList(limitNumberCookie);
     }
