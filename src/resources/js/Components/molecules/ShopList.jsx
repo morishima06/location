@@ -14,14 +14,14 @@ const ShopList = ({ res }) => {
   };
 
   const handleaddress = (e) => {
-    let name = e.currentTarget.getAttribute('name');
+    let name = e.currentTarget.getAttribute('data-name');
     let state = e.currentTarget.getAttribute('data-state');
     let city = e.currentTarget.getAttribute('data-city');
     let address = e.currentTarget.getAttribute('data-address');
     let tel = e.currentTarget.getAttribute('data-tel');
-    setPlace(name + state + city + address);
+    setPlace(state + city + address);
     let handle_info = new Object();
-    handle_info.shop_name = shop_name;
+    handle_info.name = name;
     handle_info.state = state;
     handle_info.city = city;
     handle_info.address = address;
