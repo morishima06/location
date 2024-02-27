@@ -12,7 +12,6 @@ const ShopList = ({ res }) => {
   const toggleState = () => {
     setToggle(!toggle);
   };
-  console.log(res)
 
   const handleaddress = (e) => {
     let shop_name = e.currentTarget.getAttribute('data-shop_name');
@@ -20,14 +19,13 @@ const ShopList = ({ res }) => {
     let city = e.currentTarget.getAttribute('data-city');
     let address = e.currentTarget.getAttribute('data-address');
     let tel = e.currentTarget.getAttribute('data-tel');
-    setPlace(state + city + address);
+    setPlace(shop_name + state + city + address);
     let handle_info = new Object();
     handle_info.shop_name = shop_name;
     handle_info.state = state;
     handle_info.city = city;
     handle_info.address = address;
     handle_info.tel = tel;
-
     setMapInfo(handle_info);
   };
 
