@@ -17,9 +17,7 @@ export default function MapRoute(props) {
     <>
       <div ref={searchRef} className={props.MapInfo == '' ? 'hidden' : ''}>
         <div className="ml-2 mt-2 bg-white p-1">
-          <p>{props.MapInfo.shop_name}</p>
-          <p>
-            {props.MapInfo.name}<br/>
+          <p>{props.MapInfo.shop_name}<br/>
             {props.MapInfo.state}
             {props.MapInfo.city}
             {props.MapInfo.address}
