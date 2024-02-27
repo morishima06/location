@@ -65,7 +65,7 @@ const ShopList = ({ res }) => {
         ref={insideRef}
         style={{ backgroundColor: selected ? '#E2E8F0' : '' }}
         className="mb-[-1px] cursor-pointer border-y   border-slate-400 py-2  pl-1 text-xs  text-slate-900 hover:bg-slate-50 "
-        data-shop_name={res.shop_name}
+        data-shop_name={res.name}
         data-state={res.state}
         data-city={res.city}
         data-address={res.address}
