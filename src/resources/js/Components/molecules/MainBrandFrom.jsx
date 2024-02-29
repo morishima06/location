@@ -59,7 +59,7 @@ const MainBrandForm = ({ brand_props }) => {
     setKeywordFormActive(false);
     setAddressFormActive(false);
     document.addEventListener('click', closeBrandModal);
-    if (windowWidth > 640) {
+    if (windowWidth < 640) {
       document.body.style.position = 'fixed';
     }
 

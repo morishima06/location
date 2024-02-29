@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 export default function MapRoute(props) {
+  console.log(props)
   const searchRef = useRef(null);
   const lat = props.lat;
   const lng = props.lng;
