@@ -8,11 +8,13 @@ const HomeContent = ({ keywords, brands, prefuctures }) => {
     >
       <div className="w-full px-1 sm:max-w-[800px] sm:px-0 ">
         <div className="flex justify-center ">
+          {/* PC用 */}
           <img
             src="./images/front_subject.svg"
             alt=""
-            className="mb-2  hidden sm:block sm:w-[740px]   "
+            className="mb-2  hidden sm:block sm:w-[790px]   "
           />
+          {/* スマホ用 */}
           <div className="w-full sm:hidden ">
             <h2 className="text-[38px] font-semibold  italic text-white">
               探してるショップがすぐに見つかる
